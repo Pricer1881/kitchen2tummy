@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>From My Kitchen To Your Tummy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --cream: #FFF8EA;
+    --cream-2: #FFF1D6;
+    --coral: #FF8C6B;
+    --coral-dark: #E5714F;
+    --sage: #93B57E;
+    --sage-dark: #6D9459;
+    --butter: #FFCE5C;
+    --plum: #4A3728;
+    --plum-soft: #7A6353;
+    --card-bg: #FFFFFF;
+    --border-soft: #EADFC8;
+    --shadow-color: rgba(74, 55, 40, 0.12);
+  }
+
+  :root:not([data-theme="light"]){
+    @media (prefers-color-scheme: dark){
+      --cream: #241D16;
+      --cream-2: #2C2319;
+      --coral: #FF9B7C;
+      --coral-dark: #FFB199;
+      --sage: #9FC48A;
+      --sage-dark: #B7D7A5;
+      --butter: #FFD873;
+      --plum: #F5EDE1;
+      --plum-soft: #CBB99E;
+      --card-bg: #2F2619;
+      --border-soft: #4A3B29;
+      --shadow-color: rgba(0, 0, 0, 0.35);
+    }
+  }
+
+  :root[data-theme="dark"]{
+    --cream: #241D16;
+    --cream-2: #2C2319;
+    --coral: #FF9B7C;
+    --coral-dark: #FFB199;
+    --sage: #9FC48A;
+    --sage-dark: #B7D7A5;
+    --butter: #FFD873;
+    --plum: #F5EDE1;
+    --plum-soft: #CBB99E;
+    --card-bg: #2F2619;
+    --border-soft: #4A3B29;
+    --shadow-color: rgba(0, 0, 0, 0.35);
+  }
+
+  *{ box-sizing: border-box; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin: 0;
+    background: var(--cream);
+    color: var(--plum);
+    font-family: 'Mulish', sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    overflow-x: hidden;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  h1, h2, h3, .display{
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 700;
+    color: var(--plum);
+    margin: 0;
+    line-height: 1.12;
+  }
+
+  a{ color: inherit; }
+
+  img, svg{ max-width: 100%; }
+
+  .wrap{
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- Header ---------- */
+
+  header{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--cream);
+    border-bottom: 1px solid var(--border-soft);
+  }
+
+  .nav-inner{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 28px;
+    max-width: 1120px;
+    margin: 0 auto;
+    gap: 16px;
+  }
+
+  .logo{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    white-space: nowrap;
+  }
+
+  .logo svg{ flex-shrink: 0; }
+
+  nav ul{
+    list-style: none;
+    display: flex;
+    gap: 28px;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav a{
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.98rem;
+    color: var(--plum-soft);
+    padding: 6px 2px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+
+  nav a:hover, nav a:focus-visible{
+    color: var(--coral-dark);
+    border-color: var(--coral);
+  }
+
+  .nav-cta{
+    background: var(--coral);
+    color: #fff !important;
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .nav-cta:hover{ background: var(--coral-dark); }
+
+  .nav-toggle{ display: none; }
+
+  /* ---------- Hero ---------- */
+
+  .hero{
+    padding: 72px 0 60px;
+    position: relative;
+  }
+
+  .hero-grid{
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .eyebrow-note{
+    font-weight: 700;
+    color: var(--sage-dark);
+    font-size: 1.02rem;
+    margin-bottom: 14px;
+    display: inline-block;
+  }
+
+  .hero h1{
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    letter-spacing: -0.01em;
+  }
+
+  .hero h1 .underline-word{
+    position: relative;
+    white-space: nowrap;
+  }
+
+  .hero p.lead{
+    font-size: 1.18rem;
+    color: var(--plum-soft);
+    margin: 22px 0 30px;
+    max-width: 46ch;
+  }
+
+  .hero-ctas{
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 26px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 1.02rem;
+    text-decoration: none;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.2s ease, box-shadow 0.2s ease;
+    font-family: 'Mulish', sans-serif;
+  }
+
+  .btn:active{ transform: scale(0.97); }
+
+  .btn-primary{
+    background: var(--coral);
+    color: #fff;
+    box-shadow: 0 6px 0 var(--coral-dark);
+  }
+
+  .btn-primary:hover{ background: var(--coral-dark); }
+
+  .btn-primary:active{ box-shadow: 0 2px 0 var(--coral-dark); transform: translateY(4px) scale(0.99); }
+
+  .btn-ghost{
+    background: transparent;
+    border-color: var(--plum);
+    color: var(--plum);
+  }
+
+  .btn-ghost:hover{ background: var(--plum); color: var(--cream); }
+
+  .hero-art{
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  .steam path{
+    animation: steamRise 3.5s ease-in-out infinite;
+    transform-origin: bottom center;
+  }
+  .steam path:nth-child(2){ animation-delay: 0.6s; }
+  .steam path:nth-child(3){ animation-delay: 1.2s; }
+
+  @keyframes steamRise{
+    0%   { opacity: 0; transform: translateY(6px) scaleY(0.9); }
+    30%  { opacity: 0.85; }
+    70%  { opacity: 0.55; }
+    100% { opacity: 0; transform: translateY(-18px) scaleY(1.05); }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .steam path{ animation: none; opacity: 0.6; }
+  }
+
+  /* ---------- Wavy divider ---------- */
+
+  .wave-divider{
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-top: -2px;
+  }
+
+  /* ---------- Section basics ---------- */
+
+  section{ padding: 78px 0; }
+
+  .section-head{
+    max-width: 56ch;
+    margin-bottom: 44px;
+  }
+
+  .section-head h2{
+    font-size: clamp(1.8rem, 3.4vw, 2.4rem);
+    margin-bottom: 14px;
+  }
+
+  .section-head p{
+    color: var(--plum-soft);
+    font-size: 1.08rem;
+  }
+
+  .section-tag{
+    color: var(--sage-dark);
+    font-weight: 700;
+  }
+
+  /* ---------- Menu ---------- */
+
+  .menu-section{
+    background: var(--cream-2);
+    border-radius: 40px;
+    margin: 0 16px;
+  }
+
+  .menu-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+  }
+
+  .menu-card{
+    background: var(--card-bg);
+    border-radius: 22px;
+    padding: 26px 24px 24px;
+    position: relative;
+    box-shadow: 0 10px 24px -12px var(--shadow-color);
+    border: 1px solid var(--border-soft);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .plate-icon{
+    width: 56px;
+    height: 56px;
+  }
+
+  .menu-card h3{
+    font-size: 1.28rem;
+  }
+
+  .menu-card .desc{
+    color: var(--plum-soft);
+    font-size: 0.98rem;
+    flex-grow: 1;
+  }
+
+  .menu-card .price-row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 10px;
+    border-top: 1px dashed var(--border-soft);
+  }
+
+  .price{
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--coral-dark);
+  }
+
+  .tag-pill{
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--sage-dark);
+    background: color-mix(in srgb, var(--sage) 18%, transparent);
+    padding: 4px 11px;
+    border-radius: 999px;
+  }
+
+  .menu-note{
+    text-align: center;
+    margin-top: 36px;
+    color: var(--plum-soft);
+    font-size: 0.98rem;
+  }
+
+  /* ---------- How it works ---------- */
+
+  .steps{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    counter-reset: step;
+  }
+
+  .step{
+    position: relative;
+    padding-left: 4px;
+  }
+
+  .step-num{
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 800;
+    font-size: 2.6rem;
+    color: var(--butter);
+    -webkit-text-stroke: 2px var(--plum);
+    display: block;
+    margin-bottom: 10px;
+    line-height: 1;
+  }
+
+  .step h3{ font-size: 1.2rem; margin-bottom: 8px; }
+  .step p{ color: var(--plum-soft); font-size: 0.98rem; margin: 0; }
+
+  /* ---------- Story ---------- */
+
+  .story{
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 52px;
+    align-items: center;
+  }
+
+  .story-art{
+    background: var(--sage);
+    border-radius: 28px;
+    padding: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .story blockquote{
+    margin: 0 0 20px;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.35;
+    color: var(--plum);
+  }
+
+  .story p.byline{
+    font-weight: 700;
+    color: var(--coral-dark);
+    margin: 0 0 18px;
+  }
+
+  .story p{
+    color: var(--plum-soft);
+  }
+
+  /* ---------- Contact / footer ---------- */
+
+  .contact{
+    background: var(--plum);
+    color: var(--cream);
+    border-radius: 40px;
+    margin: 0 16px 24px;
+    padding: 64px 0;
+  }
+
+  .contact .wrap{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .contact h2{ color: var(--cream); font-size: clamp(1.8rem, 3.2vw, 2.3rem); }
+  .contact p{ color: color-mix(in srgb, var(--cream) 75%, transparent); }
+
+  .contact-details{
+    margin-top: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .contact-details a{
+    text-decoration: none;
+    font-weight: 700;
+    color: var(--cream);
+    font-size: 1.05rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .contact-details a:hover{ color: var(--butter); }
+
+  form.inquiry{
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .order-section{ background: var(--cream-2); border-radius: 40px; margin: 0 16px; }
+
+  .order-layout{
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 44px;
+    align-items: start;
+  }
+
+  .order-items{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .order-row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-soft);
+    border-radius: 16px;
+    padding: 14px 18px;
+  }
+
+  .order-row .item-info h4{
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 1.05rem;
+    margin: 0 0 2px;
+  }
+
+  .order-row .item-info span{
+    color: var(--plum-soft);
+    font-size: 0.92rem;
+  }
+
+  .qty-control{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+
+  .qty-btn{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid var(--coral);
+    background: transparent;
+    color: var(--coral-dark);
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    padding: 0;
+  }
+
+  .qty-btn:hover{ background: var(--coral); color: #fff; }
+
+  .qty-value{
+    min-width: 20px;
+    text-align: center;
+    font-weight: 700;
+    font-family: 'Baloo 2', sans-serif;
+  }
+
+  .order-summary{
+    background: var(--card-bg);
+    border: 1px solid var(--border-soft);
+    border-radius: 22px;
+    padding: 28px 26px;
+    position: sticky;
+    top: 90px;
+  }
+
+  .order-summary h3{ font-size: 1.2rem; margin-bottom: 16px; }
+
+  .order-line{
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.95rem;
+    color: var(--plum-soft);
+    padding: 6px 0;
+  }
+
+  .order-total{
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--plum);
+    border-top: 1px dashed var(--border-soft);
+    margin-top: 10px;
+    padding-top: 14px;
+  }
+
+  .order-summary .empty-note{
+    color: var(--plum-soft);
+    font-size: 0.92rem;
+  }
+
+  .order-form-fields{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .order-form-fields label{
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--plum-soft);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .order-form-fields input, .order-form-fields textarea{
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border-soft);
+    background: var(--cream);
+    color: var(--plum);
+    font-family: 'Mulish', sans-serif;
+    font-size: 0.98rem;
+  }
+
+  .order-form-fields input:focus, .order-form-fields textarea:focus{
+    outline: 2px solid var(--coral);
+    outline-offset: 1px;
+  }
+
+  .order-submit{
+    margin-top: 18px;
+    width: 100%;
+    justify-content: center;
+    box-shadow: 0 6px 0 var(--coral-dark);
+  }
+
+  .order-error{
+    color: var(--coral-dark);
+    font-size: 0.88rem;
+    margin-top: 8px;
+    min-height: 1.1em;
+  }
+
+  form.inquiry label{
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+    display: block;
+    color: color-mix(in srgb, var(--cream) 85%, transparent);
+  }
+
+  form.inquiry input, form.inquiry textarea{
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: none;
+    background: color-mix(in srgb, var(--cream) 12%, transparent);
+    color: var(--cream);
+    font-family: 'Mulish', sans-serif;
+    font-size: 1rem;
+  }
+
+  form.inquiry input::placeholder, form.inquiry textarea::placeholder{
+    color: color-mix(in srgb, var(--cream) 55%, transparent);
+  }
+
+  form.inquiry input:focus, form.inquiry textarea:focus{
+    outline: 2px solid var(--butter);
+    outline-offset: 2px;
+  }
+
+  form.inquiry button{
+    margin-top: 6px;
+    align-self: flex-start;
+    background: var(--butter);
+    color: var(--plum);
+    border: none;
+    box-shadow: none;
+  }
+
+  form.inquiry button:hover{ background: #fff; }
+
+  .form-status{
+    font-size: 0.92rem;
+    color: var(--sage);
+    min-height: 1.2em;
+  }
+
+  footer.site-footer{
+    text-align: center;
+    padding: 30px 0 50px;
+    color: var(--plum-soft);
+    font-size: 0.9rem;
+  }
+
+  /* ---------- Focus visibility ---------- */
+
+  a:focus-visible, button:focus-visible{
+    outline: 2px solid var(--coral-dark);
+    outline-offset: 3px;
+  }
+
+  /* ---------- Responsive ---------- */
+
+  @media (max-width: 900px){
+    .hero-grid{ grid-template-columns: 1fr; }
+    .hero-art{ order: -1; max-width: 320px; margin: 0 auto; }
+    .menu-grid{ grid-template-columns: repeat(2, 1fr); }
+    .steps{ grid-template-columns: repeat(2, 1fr); gap: 28px; }
+    .story{ grid-template-columns: 1fr; }
+    .story-art{ max-width: 280px; margin: 0 auto; }
+    .contact .wrap{ grid-template-columns: 1fr; }
+    .order-layout{ grid-template-columns: 1fr; }
+    .order-summary{ position: static; }
+  }
+
+  @media (max-width: 620px){
+    nav ul{ display: none; }
+    .menu-grid{ grid-template-columns: 1fr; }
+    .menu-section, .contact{ border-radius: 26px; margin: 0 10px; }
+    .wrap{ padding: 0 20px; }
+    section{ padding: 56px 0; }
+  }
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <a href="#top" class="logo" aria-label="From My Kitchen To Your Tummy, home">
+      <svg width="108" height="108" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="18" cy="18" r="18" fill="#FFE0B8"/>
+        <circle cx="18" cy="19" r="10.5" fill="#FBCB93"/>
+        <path d="M6.5 20c-1-8 4-15.5 11.5-15.5S29.5 12 28.5 20c-2.5-2.5-5-4-11-4s-8.5 1.5-11 4z" fill="#E8783C"/>
+        <path d="M7.5 19c-1.2 3 0 8 2.5 10" stroke="#D96A30" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+        <path d="M28.5 19c1.2 3 0 8-2.5 10" stroke="#D96A30" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+        <circle cx="13.3" cy="20" r="1.3" fill="#1C1C1C"/>
+        <circle cx="22.7" cy="20" r="1.3" fill="#1C1C1C"/>
+        <path d="M11 17.3l1.6-.6M25 17.3l-1.6-.6" stroke="#5C4632" stroke-width="1" stroke-linecap="round"/>
+        <circle cx="11.5" cy="23.2" r="0.5" fill="#D98A5E"/>
+        <circle cx="13" cy="24.3" r="0.5" fill="#D98A5E"/>
+        <circle cx="24.5" cy="23.2" r="0.5" fill="#D98A5E"/>
+        <circle cx="23" cy="24.3" r="0.5" fill="#D98A5E"/>
+        <path d="M16 25.5c1 1 3 1 4 0" stroke="#B5674E" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+      </svg>
+      <span>From My Kitchen</span>
+    </a>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#order">Order</a></li>
+      </ul>
+    </nav>
+    <a href="#contact" class="nav-cta">Get in touch</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow-note">Home-cooked meals, made this week</span>
+        <h1>From my kitchen<br>to your tummy.</h1>
+        <p class="lead">Real meals, cooked the way your grandmother would — fresh ingredients, no shortcuts, ready when you need dinner solved.</p>
+        <div class="hero-ctas">
+          <a href="#menu" class="btn btn-primary">See this week's menu</a>
+          <a href="#contact" class="btn btn-ghost">Ask a question</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg width="340" height="340" viewBox="0 0 340 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="170" cy="300" rx="110" ry="14" fill="var(--plum)" opacity="0.08"/>
+          <g class="steam">
+            <path d="M130 120C122 105 138 95 130 80" stroke="var(--plum-soft)" stroke-width="5" stroke-linecap="round" opacity="0.6"/>
+            <path d="M170 112C162 97 178 87 170 72" stroke="var(--plum-soft)" stroke-width="5" stroke-linecap="round" opacity="0.6"/>
+            <path d="M210 120C202 105 218 95 210 80" stroke="var(--plum-soft)" stroke-width="5" stroke-linecap="round" opacity="0.6"/>
+          </g>
+          <path d="M60 165C60 145 95 140 170 140C245 140 280 145 280 165C280 185 260 190 260 190L80 190C80 190 60 185 60 165Z" fill="var(--butter)"/>
+          <path d="M50 190C50 190 50 250 170 250C290 250 290 190 290 190" fill="var(--coral)"/>
+          <ellipse cx="170" cy="190" rx="120" ry="20" fill="var(--cream)"/>
+          <ellipse cx="130" cy="185" rx="14" ry="9" fill="var(--sage)"/>
+          <ellipse cx="175" cy="192" rx="16" ry="10" fill="var(--coral-dark)"/>
+          <ellipse cx="215" cy="184" rx="12" ry="8" fill="var(--butter)"/>
+          <ellipse cx="150" cy="196" rx="10" ry="7" fill="var(--sage-dark)"/>
+          <rect x="52" y="250" width="236" height="20" rx="10" fill="var(--plum)" opacity="0.85"/>
+        </svg>
+      </div>
+    </div>
+
+    <svg class="wave-divider" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,20 C150,60 350,0 600,25 C850,50 1050,0 1200,25 L1200,60 L0,60 Z" fill="var(--cream-2)"/>
+    </svg>
+  </section>
+
+  <!-- MENU -->
+  <section class="menu-section" id="menu">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-tag">The menu</p>
+        <h2>Simple food, made fresh</h2>
+        <p>No fuss, no fillers — just the classics, made the way you'd want them at home.</p>
+      </div>
+
+      <div class="menu-grid" style="grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 900px;">
+
+        <div class="menu-card">
+          <svg class="plate-icon" viewBox="0 0 56 56" fill="none">
+            <circle cx="28" cy="28" r="26" fill="#FBF3E7" stroke="#E8DCC5" stroke-width="2"/>
+            <ellipse cx="28" cy="34" rx="18" ry="6" fill="#F3D9A4"/>
+            <path d="M12 30c4-3 8 2 12-1s6 3 10 0s8-3 10 0" stroke="#F0C860" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+            <path d="M14 26c4-3 8 2 12-1s6 3 10 0s6-2 8 0" stroke="#F0C860" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+            <path d="M16 22c4-2 7 2 11-1s6 2 9 0" stroke="#F0C860" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+            <circle cx="21" cy="27" r="2.6" fill="#C0392B"/>
+            <circle cx="33" cy="23" r="2.3" fill="#C0392B"/>
+            <circle cx="26" cy="33" r="2.2" fill="#C0392B"/>
+            <path d="M18 20l2 3M36 26l2 3" stroke="#5C8A4A" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          <h3>Spaghetti</h3>
+          <p class="desc">Just normal spaghetti. If you want sauce, I'll add it.</p>
+          <div class="price-row">
+            <span class="price">$10</span>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <svg class="plate-icon" viewBox="0 0 56 56" fill="none">
+            <circle cx="28" cy="28" r="26" fill="#FBF3E7" stroke="#E8DCC5" stroke-width="2"/>
+            <rect x="14" y="14" width="28" height="28" rx="4" fill="#E3A756"/>
+            <rect x="14" y="14" width="28" height="28" rx="4" fill="none" stroke="#C97F32" stroke-width="1.5"/>
+            <path d="M18 22c4 3 6-3 10 0s6-2 10 1" stroke="#FFDD73" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <path d="M17 29c4 3 7-2 11 1s6-1 10 2" stroke="#FFDD73" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <path d="M18 36c4 2 6-2 10 0s6-1 9 1" stroke="#FFDD73" stroke-width="3" stroke-linecap="round" fill="none"/>
+          </svg>
+          <h3>Toast</h3>
+          <p class="desc">Cheese and bread, nothing else.</p>
+          <div class="price-row">
+            <span class="price">$10</span>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <svg class="plate-icon" viewBox="0 0 56 56" fill="none">
+            <circle cx="28" cy="28" r="26" fill="#FBF3E7" stroke="#E8DCC5" stroke-width="2"/>
+            <path d="M14 26c0-4 3-6 14-6s14 2 14 6c0 8-6 14-14 14s-14-6-14-14z" fill="#FFD34D"/>
+            <path d="M14 26c0-4 3-6 14-6s14 2 14 6" fill="#FFE58A"/>
+            <circle cx="22" cy="27" r="2.4" fill="#F2F2ED"/>
+            <circle cx="30" cy="24" r="2.1" fill="#F2F2ED"/>
+            <circle cx="34" cy="31" r="2.3" fill="#F2F2ED"/>
+            <circle cx="24" cy="34" r="1.9" fill="#F2F2ED"/>
+            <path d="M18 24l1.5 2.5M36 26l1.5 2.5" stroke="#5C8A4A" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+          <h3>Omelette</h3>
+          <p class="desc">A fried egg omelette with feta cheese. A family favorite.</p>
+          <div class="price-row">
+            <span class="price">$10</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="section-head" style="margin-top: 56px;">
+        <p class="section-tag">Beverages</p>
+      </div>
+
+      <div class="menu-grid">
+
+        <div class="menu-card">
+          <svg class="plate-icon" viewBox="0 0 56 56" fill="none">
+            <circle cx="28" cy="28" r="26" fill="#FBF3E7" stroke="#E8DCC5" stroke-width="2"/>
+            <path d="M19 16h18l-2 26a2 2 0 0 1-2 2H23a2 2 0 0 1-2-2z" fill="#FFE873"/>
+            <path d="M19 16h18l-1 6H20z" fill="#FFF3B0"/>
+            <circle cx="34" cy="18" r="6" fill="#F9E14A" stroke="#E3C82E" stroke-width="1"/>
+            <path d="M34 13v10M29 18h10" stroke="#E3C82E" stroke-width="1"/>
+            <rect x="30" y="8" width="2.4" height="20" rx="1.2" fill="#F27272" transform="rotate(12 31 18)"/>
+          </svg>
+          <h3>Lemonade</h3>
+          <p class="desc">Sugar, lemon, and water — or sparkling water if you'd like it fizzy.</p>
+          <div class="price-row">
+            <span class="price">$5</span>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <svg class="plate-icon" viewBox="0 0 56 56" fill="none">
+            <circle cx="28" cy="28" r="26" fill="#FBF3E7" stroke="#E8DCC5" stroke-width="2"/>
+            <path d="M17 40c-3 0-5-6-5-10s2-4 5-4" stroke="none" fill="none"/>
+            <path d="M40 26c3 0 5 2 5 5s-2 5-5 5" stroke="#8B5A2B" stroke-width="2.2" fill="none"/>
+            <path d="M16 24h22v10a11 11 0 0 1-11 11 11 11 0 0 1-11-11z" fill="#6F4423"/>
+            <ellipse cx="27" cy="24" rx="11" ry="3.2" fill="#F5EDE1"/>
+            <ellipse cx="27" cy="23" rx="8" ry="2.2" fill="#8B5A2B"/>
+            <path d="M20 12c-1 3 2 3 1 6M27 12c-1 3 2 3 1 6M34 12c-1 3 2 3 1 6" stroke="#C9B79A" stroke-width="2" stroke-linecap="round" fill="none"/>
+          </svg>
+          <h3>Hot chocolate</h3>
+          <p class="desc">Warm and rich, just how you'd expect.</p>
+          <div class="price-row">
+            <span class="price">$5</span>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <svg class="plate-icon" viewBox="0 0 56 56" fill="none">
+            <circle cx="28" cy="28" r="26" fill="#FBF3E7" stroke="#E8DCC5" stroke-width="2"/>
+            <path d="M20 16h16l-1.5 24a2 2 0 0 1-2 2h-9a2 2 0 0 1-2-2z" fill="#D7F0EE" opacity="0.9"/>
+            <circle cx="24" cy="22" r="1.3" fill="#8FC9C2"/>
+            <circle cx="30" cy="27" r="1" fill="#8FC9C2"/>
+            <circle cx="26" cy="33" r="1.2" fill="#8FC9C2"/>
+            <circle cx="31" cy="20" r="0.9" fill="#8FC9C2"/>
+            <circle cx="28" cy="38" r="1" fill="#8FC9C2"/>
+            <path d="M33 14a6 6 0 0 1-6 6 6 6 0 0 1 6-6z" fill="#8FBF57"/>
+            <path d="M33 14a6 6 0 0 0-6 6" stroke="#5C8A3C" stroke-width="0.8" fill="none"/>
+          </svg>
+          <h3>Sparkling water</h3>
+          <p class="desc">Cold and bubbly.</p>
+          <div class="price-row">
+            <span class="price">$2</span>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <svg class="plate-icon" viewBox="0 0 56 56" fill="none">
+            <circle cx="28" cy="28" r="26" fill="#FBF3E7" stroke="#E8DCC5" stroke-width="2"/>
+            <path d="M20 16h16l-1.5 24a2 2 0 0 1-2 2h-9a2 2 0 0 1-2-2z" fill="#CFEAF5" opacity="0.85"/>
+            <path d="M20.6 20h14.8" stroke="#FFFFFF" stroke-width="1.4" opacity="0.7"/>
+            <path d="M22 16l-1.4 24" stroke="#AEDCEE" stroke-width="1.2" opacity="0.6"/>
+          </svg>
+          <h3>Water</h3>
+          <p class="desc">On the house.</p>
+          <div class="price-row">
+            <span class="price">Free</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-tag">How it works</p>
+        <h2>Dinner, sorted in four steps</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">1</span>
+          <h3>Pick your meals</h3>
+          <p>Message with what looks good from this week's menu, and how many you'd like.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">2</span>
+          <h3>I cook them fresh</h3>
+          <p>I cook them fresh every morning.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">3</span>
+          <h3>Send payment</h3>
+          <p>Venmo the money to @Fatih-Ezgin.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">4</span>
+          <h3>Pick up or delivery</h3>
+          <p>Pick your order up at the front door. Make sure you ring the doorbell! Pickup address: 19 Coventry, Newport Beach, CA 92660.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DELIVERY -->
+  <section id="delivery">
+    <div class="wrap" style="display:flex; align-items:center; gap:24px; flex-wrap:wrap; justify-content:center; text-align:center;">
+      <svg width="52" height="52" viewBox="0 0 52 52" fill="none" aria-hidden="true">
+        <circle cx="26" cy="26" r="24" fill="var(--sage)"/>
+        <rect x="12" y="22" width="20" height="12" rx="2" fill="var(--cream)"/>
+        <path d="M32 26h6l4 5v5h-10z" fill="var(--cream)"/>
+        <circle cx="19" cy="37" r="3" fill="var(--plum)"/>
+        <circle cx="35" cy="37" r="3" fill="var(--plum)"/>
+      </svg>
+      <h2 style="font-size: 1.6rem;">We deliver with DoorDash</h2>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <!-- CONTACT -->
+  <!-- ORDER -->
+  <section class="order-section" id="order">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-tag">Place an order</p>
+        <h2>Pick what you'd like</h2>
+        <p>Choose your items and quantities below, fill in your details, and it'll open an email ready to send.</p>
+      </div>
+
+      <div class="order-layout">
+        <div class="order-items" id="orderItems">
+          <div class="order-row" data-name="Spaghetti" data-price="10">
+            <div class="item-info"><h4>Spaghetti</h4><span>$10 each</span></div>
+            <div class="qty-control">
+              <button type="button" class="qty-btn" data-action="dec" aria-label="Decrease Spaghetti quantity">–</button>
+              <span class="qty-value" data-qty>0</span>
+              <button type="button" class="qty-btn" data-action="inc" aria-label="Increase Spaghetti quantity">+</button>
+            </div>
+          </div>
+          <div class="order-row" data-name="Toast" data-price="10">
+            <div class="item-info"><h4>Toast</h4><span>$10 each</span></div>
+            <div class="qty-control">
+              <button type="button" class="qty-btn" data-action="dec" aria-label="Decrease Toast quantity">–</button>
+              <span class="qty-value" data-qty>0</span>
+              <button type="button" class="qty-btn" data-action="inc" aria-label="Increase Toast quantity">+</button>
+            </div>
+          </div>
+          <div class="order-row" data-name="Omelette" data-price="10">
+            <div class="item-info"><h4>Omelette</h4><span>$10 each</span></div>
+            <div class="qty-control">
+              <button type="button" class="qty-btn" data-action="dec" aria-label="Decrease Omelette quantity">–</button>
+              <span class="qty-value" data-qty>0</span>
+              <button type="button" class="qty-btn" data-action="inc" aria-label="Increase Omelette quantity">+</button>
+            </div>
+          </div>
+          <div class="order-row" data-name="Lemonade" data-price="5">
+            <div class="item-info"><h4>Lemonade</h4><span>$5 each</span></div>
+            <div class="qty-control">
+              <button type="button" class="qty-btn" data-action="dec" aria-label="Decrease Lemonade quantity">–</button>
+              <span class="qty-value" data-qty>0</span>
+              <button type="button" class="qty-btn" data-action="inc" aria-label="Increase Lemonade quantity">+</button>
+            </div>
+          </div>
+          <div class="order-row" data-name="Hot chocolate" data-price="5">
+            <div class="item-info"><h4>Hot chocolate</h4><span>$5 each</span></div>
+            <div class="qty-control">
+              <button type="button" class="qty-btn" data-action="dec" aria-label="Decrease Hot chocolate quantity">–</button>
+              <span class="qty-value" data-qty>0</span>
+              <button type="button" class="qty-btn" data-action="inc" aria-label="Increase Hot chocolate quantity">+</button>
+            </div>
+          </div>
+          <div class="order-row" data-name="Sparkling water" data-price="2">
+            <div class="item-info"><h4>Sparkling water</h4><span>$2 each</span></div>
+            <div class="qty-control">
+              <button type="button" class="qty-btn" data-action="dec" aria-label="Decrease Sparkling water quantity">–</button>
+              <span class="qty-value" data-qty>0</span>
+              <button type="button" class="qty-btn" data-action="inc" aria-label="Increase Sparkling water quantity">+</button>
+            </div>
+          </div>
+          <div class="order-row" data-name="Water" data-price="0">
+            <div class="item-info"><h4>Water</h4><span>Free</span></div>
+            <div class="qty-control">
+              <button type="button" class="qty-btn" data-action="dec" aria-label="Decrease Water quantity">–</button>
+              <span class="qty-value" data-qty>0</span>
+              <button type="button" class="qty-btn" data-action="inc" aria-label="Increase Water quantity">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="order-summary">
+          <h3>Your order</h3>
+          <div id="summaryLines"><p class="empty-note">Nothing selected yet — add items on the left.</p></div>
+          <div class="order-total"><span>Total</span><span id="summaryTotal">$0</span></div>
+
+          <div class="order-form-fields">
+            <div>
+              <label for="orderName">Name</label>
+              <input type="text" id="orderName" placeholder="Your name">
+            </div>
+            <div>
+              <label for="orderPhone">Phone or email</label>
+              <input type="text" id="orderPhone" placeholder="How should I reach you?">
+            </div>
+            <div>
+              <label for="orderNotes">Notes</label>
+              <textarea id="orderNotes" rows="3" placeholder="Pickup time, allergies, anything else"></textarea>
+            </div>
+          </div>
+
+          <a href="#" target="_top" class="btn btn-primary order-submit" id="orderSubmit">Send order</a>
+          <p class="order-error" id="orderError" role="alert"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact">
+      <div class="wrap">
+        <div>
+          <h2>Let's get you fed</h2>
+          <p>Have a question about the menu, allergies, or delivery area? Send a note — I read every one myself.</p>
+          <div class="contact-details">
+            <a href="mailto:erinezgin@gmail.com">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+              erinezgin@gmail.com
+            </a>
+            <a href="tel:+18183123952">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.35 1.79.68 2.63a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.45-1.45a2 2 0 0 1 2.11-.45c.84.33 1.73.56 2.63.68A2 2 0 0 1 22 16.92z"/></svg>
+              (818) 312-3952
+            </a>
+          </div>
+        </div>
+        <form class="inquiry" id="inquiryForm">
+          <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required>
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@email.com" required>
+          </div>
+          <div>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" placeholder="Which meals are you interested in?" required></textarea>
+          </div>
+          <button type="submit" class="btn">Send message</button>
+          <p class="form-status" id="formStatus" role="status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 From My Kitchen To Your Tummy. Made with love, one pan at a time.</p>
+  </footer>
+
+</main>
+
+<script>
+  // Placeholder submit handling — replace with real form backend (e.g. Formspree, mailto, or a booking tool) when ready.
+  const form = document.getElementById('inquiryForm');
+  const status = document.getElementById('formStatus');
+  if(form){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      status.textContent = "Thanks! This form isn't connected yet — for now, please email or call directly.";
+    });
+  }
+
+  // Order form logic
+  (function(){
+    const rows = document.querySelectorAll('#orderItems .order-row');
+    const summaryLines = document.getElementById('summaryLines');
+    const summaryTotal = document.getElementById('summaryTotal');
+    const orderError = document.getElementById('orderError');
+    const orderSubmit = document.getElementById('orderSubmit');
+    const ORDER_EMAIL = 'erinezgin@gmail.com';
+
+    function getItems(){
+      const items = [];
+      rows.forEach(function(row){
+        const qty = parseInt(row.querySelector('[data-qty]').textContent, 10);
+        if(qty > 0){
+          items.push({
+            name: row.getAttribute('data-name'),
+            price: parseFloat(row.getAttribute('data-price')),
+            qty: qty
+          });
+        }
+      });
+      return items;
+    }
+
+    function renderSummary(){
+      const items = getItems();
+      if(items.length === 0){
+        summaryLines.innerHTML = '<p class="empty-note">Nothing selected yet — add items on the left.</p>';
+        summaryTotal.textContent = '$0';
+        return;
+      }
+      let total = 0;
+      let html = '';
+      items.forEach(function(item){
+        const lineTotal = item.price * item.qty;
+        total += lineTotal;
+        const priceLabel = item.price === 0 ? 'Free' : ('$' + lineTotal.toFixed(2).replace(/\.00$/, ''));
+        html += '<div class="order-line"><span>' + item.qty + ' × ' + item.name + '</span><span>' + priceLabel + '</span></div>';
+      });
+      summaryLines.innerHTML = html;
+      summaryTotal.textContent = '$' + total.toFixed(2).replace(/\.00$/, '');
+    }
+
+    rows.forEach(function(row){
+      const qtyEl = row.querySelector('[data-qty]');
+      row.querySelectorAll('.qty-btn').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          let qty = parseInt(qtyEl.textContent, 10);
+          if(btn.getAttribute('data-action') === 'inc'){
+            qty = Math.min(qty + 1, 20);
+          } else {
+            qty = Math.max(qty - 1, 0);
+          }
+          qtyEl.textContent = qty;
+          renderSummary();
+          orderError.textContent = '';
+        });
+      });
+    });
+
+    orderSubmit.addEventListener('click', function(e){
+      const items = getItems();
+      const name = document.getElementById('orderName').value.trim();
+      const contact = document.getElementById('orderPhone').value.trim();
+      const notes = document.getElementById('orderNotes').value.trim();
+
+      if(items.length === 0){
+        e.preventDefault();
+        orderError.style.color = 'var(--coral-dark)';
+        orderError.textContent = 'Add at least one item before sending.';
+        return;
+      }
+      if(!name){
+        e.preventDefault();
+        orderError.style.color = 'var(--coral-dark)';
+        orderError.textContent = 'Enter your name so I know who it\'s from.';
+        return;
+      }
+      if(!contact){
+        e.preventDefault();
+        orderError.style.color = 'var(--coral-dark)';
+        orderError.textContent = 'Add a phone number or email so I can reach you.';
+        return;
+      }
+      orderError.textContent = '';
+
+      let total = 0;
+      let plainBody = 'New order from ' + name + '\n\n';
+      items.forEach(function(item){
+        const lineTotal = item.price * item.qty;
+        total += lineTotal;
+        plainBody += item.qty + ' x ' + item.name + ' - ' + (item.price === 0 ? 'Free' : ('$' + lineTotal.toFixed(2).replace(/\.00$/, ''))) + '\n';
+      });
+      plainBody += '\nTotal: $' + total.toFixed(2).replace(/\.00$/, '') + '\n\n';
+      plainBody += 'Contact: ' + contact + '\n';
+      if(notes){ plainBody += 'Notes: ' + notes + '\n'; }
+
+      const subjectText = 'New order from ' + name;
+      const gmailUrl = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(ORDER_EMAIL) +
+        '&su=' + encodeURIComponent(subjectText) + '&body=' + encodeURIComponent(plainBody);
+
+      // Set the link's real destination right before the browser follows it —
+      // this is a genuine anchor click, so it isn't treated as a pop-up.
+      orderSubmit.setAttribute('href', gmailUrl);
+
+      if(navigator.clipboard){
+        navigator.clipboard.writeText(plainBody).catch(function(){});
+      }
+      orderError.style.color = 'var(--sage-dark)';
+      orderError.textContent = 'Opening Gmail — the order details are also copied, in case you need to paste them.';
+    });
+
+    renderSummary();
+  })();
+</script>
+
+</body>
+</html>
