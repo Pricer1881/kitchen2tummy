@@ -734,12 +734,17 @@
     </a>
     <nav aria-label="Primary">
       <ul>
-        <li><a href="#menu">Menu</a></li>
-        <li><a href="#how">How it works</a></li>
-        <li><a href="#order">Order</a></li>
+        <li><a href="#menu" data-i18n="nav_menu">Menu</a></li>
+        <li><a href="#how" data-i18n="nav_how">How it works</a></li>
+        <li><a href="#order" data-i18n="nav_order">Order</a></li>
       </ul>
     </nav>
-    <a href="#contact" class="nav-cta">Get in touch</a>
+    <select id="langSwitch" aria-label="Choose language" style="border-radius:999px; border:2px solid var(--coral); background:var(--cream); color:var(--plum); font-weight:700; font-family:'Mulish',sans-serif; padding:8px 12px; cursor:pointer;">
+      <option value="en">EN — English</option>
+      <option value="es">ES — Español</option>
+      <option value="tr">TR — Türkçe</option>
+    </select>
+    <a href="#contact" class="nav-cta" data-i18n="nav_cta">Get in touch</a>
   </div>
 </header>
 
@@ -749,12 +754,12 @@
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <span class="eyebrow-note">Home-cooked meals, made this week</span>
-        <h1>From my kitchen<br>to your tummy.</h1>
-        <p class="lead">Real meals, cooked the way your grandmother would — fresh ingredients, no shortcuts, ready when you need dinner solved.</p>
+        <span class="eyebrow-note" data-i18n="hero_eyebrow">Home-cooked meals, made this week</span>
+        <h1 data-i18n-html="hero_h1">From my kitchen<br>to your tummy.</h1>
+        <p class="lead" data-i18n="hero_lead">Real meals, cooked the way your grandmother would — fresh ingredients, no shortcuts, ready when you need dinner solved.</p>
         <div class="hero-ctas">
-          <a href="#menu" class="btn btn-primary">See this week's menu</a>
-          <a href="#contact" class="btn btn-ghost">Ask a question</a>
+          <a href="#menu" class="btn btn-primary" data-i18n="hero_cta1">See this week's menu</a>
+          <a href="#contact" class="btn btn-ghost" data-i18n="hero_cta2">Ask a question</a>
         </div>
       </div>
       <div class="hero-art" aria-hidden="true">
@@ -786,9 +791,9 @@
   <section class="menu-section" id="menu">
     <div class="wrap">
       <div class="section-head">
-        <p class="section-tag">The menu</p>
-        <h2>Simple food, made fresh</h2>
-        <p>No fuss, no fillers — just the classics, made the way you'd want them at home.</p>
+        <p class="section-tag" data-i18n="menu_tag">The menu</p>
+        <h2 data-i18n="menu_h2">Simple food, made fresh</h2>
+        <p data-i18n="menu_p">No fuss, no fillers — just the classics, made the way you'd want them at home.</p>
       </div>
 
       <div class="menu-grid" style="grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 900px;">
@@ -805,8 +810,8 @@
             <circle cx="26" cy="33" r="2.2" fill="#C0392B"/>
             <path d="M18 20l2 3M36 26l2 3" stroke="#5C8A4A" stroke-width="1.6" stroke-linecap="round"/>
           </svg>
-          <h3>Spaghetti</h3>
-          <p class="desc">Just normal spaghetti. If you want sauce, I'll add it.</p>
+          <h3 data-i18n="spaghetti_name">Spaghetti</h3>
+          <p class="desc" data-i18n="spaghetti_desc">Just normal spaghetti. If you want sauce, I'll add it.</p>
           <div class="price-row">
             <span class="price">$10</span>
           </div>
@@ -821,8 +826,8 @@
             <path d="M17 29c4 3 7-2 11 1s6-1 10 2" stroke="#FFDD73" stroke-width="4" stroke-linecap="round" fill="none"/>
             <path d="M18 36c4 2 6-2 10 0s6-1 9 1" stroke="#FFDD73" stroke-width="3" stroke-linecap="round" fill="none"/>
           </svg>
-          <h3>Toast</h3>
-          <p class="desc">Cheese and bread, nothing else.</p>
+          <h3 data-i18n="toast_name">Toast</h3>
+          <p class="desc" data-i18n="toast_desc">Cheese and bread, nothing else.</p>
           <div class="price-row">
             <span class="price">$10</span>
           </div>
@@ -839,8 +844,8 @@
             <circle cx="24" cy="34" r="1.9" fill="#F2F2ED"/>
             <path d="M18 24l1.5 2.5M36 26l1.5 2.5" stroke="#5C8A4A" stroke-width="1.4" stroke-linecap="round"/>
           </svg>
-          <h3>Omelette</h3>
-          <p class="desc">A fried egg omelette with feta cheese. A family favorite.</p>
+          <h3 data-i18n="omelette_name">Omelette</h3>
+          <p class="desc" data-i18n="omelette_desc">A fried egg omelette with feta cheese. A family favorite.</p>
           <div class="price-row">
             <span class="price">$10</span>
           </div>
@@ -849,7 +854,7 @@
       </div>
 
       <div class="section-head" style="margin-top: 56px;">
-        <p class="section-tag">Beverages</p>
+        <p class="section-tag" data-i18n="beverages_tag">Beverages</p>
       </div>
 
       <div class="menu-grid">
@@ -863,8 +868,8 @@
             <path d="M34 13v10M29 18h10" stroke="#E3C82E" stroke-width="1"/>
             <rect x="30" y="8" width="2.4" height="20" rx="1.2" fill="#F27272" transform="rotate(12 31 18)"/>
           </svg>
-          <h3>Lemonade</h3>
-          <p class="desc">Sugar, lemon, and water — or sparkling water if you'd like it fizzy.</p>
+          <h3 data-i18n="lemonade_name">Lemonade</h3>
+          <p class="desc" data-i18n="lemonade_desc">Sugar, lemon, and water — or sparkling water if you'd like it fizzy.</p>
           <div class="price-row">
             <span class="price">$5</span>
           </div>
@@ -880,8 +885,8 @@
             <ellipse cx="27" cy="23" rx="8" ry="2.2" fill="#8B5A2B"/>
             <path d="M20 12c-1 3 2 3 1 6M27 12c-1 3 2 3 1 6M34 12c-1 3 2 3 1 6" stroke="#C9B79A" stroke-width="2" stroke-linecap="round" fill="none"/>
           </svg>
-          <h3>Hot chocolate</h3>
-          <p class="desc">Warm and rich, just how you'd expect.</p>
+          <h3 data-i18n="hotchoc_name">Hot chocolate</h3>
+          <p class="desc" data-i18n="hotchoc_desc">Warm and rich, just how you'd expect.</p>
           <div class="price-row">
             <span class="price">$5</span>
           </div>
@@ -899,8 +904,8 @@
             <path d="M33 14a6 6 0 0 1-6 6 6 6 0 0 1 6-6z" fill="#8FBF57"/>
             <path d="M33 14a6 6 0 0 0-6 6" stroke="#5C8A3C" stroke-width="0.8" fill="none"/>
           </svg>
-          <h3>Sparkling water</h3>
-          <p class="desc">Cold and bubbly.</p>
+          <h3 data-i18n="sparkling_name">Sparkling water</h3>
+          <p class="desc" data-i18n="sparkling_desc">Cold and bubbly.</p>
           <div class="price-row">
             <span class="price">$2</span>
           </div>
@@ -913,10 +918,10 @@
             <path d="M20.6 20h14.8" stroke="#FFFFFF" stroke-width="1.4" opacity="0.7"/>
             <path d="M22 16l-1.4 24" stroke="#AEDCEE" stroke-width="1.2" opacity="0.6"/>
           </svg>
-          <h3>Water</h3>
-          <p class="desc">On the house.</p>
+          <h3 data-i18n="water_name">Water</h3>
+          <p class="desc" data-i18n="water_desc">On the house.</p>
           <div class="price-row">
-            <span class="price">Free</span>
+            <span class="price" data-i18n="lbl_free">Free</span>
           </div>
         </div>
 
@@ -929,29 +934,29 @@
   <section id="how">
     <div class="wrap">
       <div class="section-head">
-        <p class="section-tag">How it works</p>
-        <h2>Dinner, sorted in four steps</h2>
+        <p class="section-tag" data-i18n="how_tag">How it works</p>
+        <h2 data-i18n="how_h2">Dinner, sorted in four steps</h2>
       </div>
       <div class="steps">
         <div class="step">
           <span class="step-num">1</span>
-          <h3>Pick your meals</h3>
-          <p>Message with what looks good from this week's menu, and how many you'd like.</p>
+          <h3 data-i18n="step1_title">Pick your meals</h3>
+          <p data-i18n="step1_desc">Message with what looks good from this week's menu, and how many you'd like.</p>
         </div>
         <div class="step">
           <span class="step-num">2</span>
-          <h3>I cook them fresh</h3>
-          <p>I cook them fresh every morning.</p>
+          <h3 data-i18n="step2_title">I cook them fresh</h3>
+          <p data-i18n="step2_desc">I cook them fresh every morning.</p>
         </div>
         <div class="step">
           <span class="step-num">3</span>
-          <h3>Send payment</h3>
-          <p>Venmo the money to @Fatih-Ezgin.</p>
+          <h3 data-i18n="step3_title">Send payment</h3>
+          <p data-i18n="step3_desc">Venmo the money to @Fatih-Ezgin.</p>
         </div>
         <div class="step">
           <span class="step-num">4</span>
-          <h3>Pick up or delivery</h3>
-          <p>Pick your order up at the front door. Make sure you ring the doorbell! Pickup address: 19 Coventry, Newport Beach, CA 92660.</p>
+          <h3 data-i18n="step4_title">Pick up or delivery</h3>
+          <p data-i18n="step4_desc">Pick your order up at the front door. Make sure you ring the doorbell! Pickup address: 19 Coventry, Newport Beach, CA 92660.</p>
         </div>
       </div>
     </div>
@@ -967,7 +972,7 @@
         <circle cx="19" cy="37" r="3" fill="var(--plum)"/>
         <circle cx="35" cy="37" r="3" fill="var(--plum)"/>
       </svg>
-      <h2 style="font-size: 1.6rem;">We deliver with DoorDash</h2>
+      <h2 style="font-size: 1.6rem;" data-i18n="delivery_h2">We deliver with DoorDash</h2>
     </div>
   </section>
 
@@ -977,15 +982,15 @@
   <section class="order-section" id="order">
     <div class="wrap">
       <div class="section-head">
-        <p class="section-tag">Place an order</p>
-        <h2>Pick what you'd like</h2>
-        <p>Choose your items and quantities below, fill in your details, and it'll open an email ready to send.</p>
+        <p class="section-tag" data-i18n="order_tag">Place an order</p>
+        <h2 data-i18n="order_h2">Pick what you'd like</h2>
+        <p data-i18n="order_p">Choose your items and quantities below, fill in your details, and it'll open an email ready to send.</p>
       </div>
 
       <div class="order-layout">
         <div class="order-items" id="orderItems">
           <div class="order-row" data-name="Spaghetti" data-price="10">
-            <div class="item-info"><h4>Spaghetti</h4><span>$10 each</span></div>
+            <div class="item-info"><h4 data-i18n="spaghetti_name">Spaghetti</h4><span>$10 <span data-i18n="lbl_each">each</span></span></div>
             <div class="qty-control">
               <button type="button" class="qty-btn" data-action="dec" aria-label="Decrease Spaghetti quantity">–</button>
               <span class="qty-value" data-qty>0</span>
@@ -993,7 +998,7 @@
             </div>
           </div>
           <div class="order-row" data-name="Toast" data-price="10">
-            <div class="item-info"><h4>Toast</h4><span>$10 each</span></div>
+            <div class="item-info"><h4 data-i18n="toast_name">Toast</h4><span>$10 <span data-i18n="lbl_each">each</span></span></div>
             <div class="qty-control">
               <button type="button" class="qty-btn" data-action="dec" aria-label="Decrease Toast quantity">–</button>
               <span class="qty-value" data-qty>0</span>
@@ -1001,7 +1006,7 @@
             </div>
           </div>
           <div class="order-row" data-name="Omelette" data-price="10">
-            <div class="item-info"><h4>Omelette</h4><span>$10 each</span></div>
+            <div class="item-info"><h4 data-i18n="omelette_name">Omelette</h4><span>$10 <span data-i18n="lbl_each">each</span></span></div>
             <div class="qty-control">
               <button type="button" class="qty-btn" data-action="dec" aria-label="Decrease Omelette quantity">–</button>
               <span class="qty-value" data-qty>0</span>
@@ -1009,7 +1014,7 @@
             </div>
           </div>
           <div class="order-row" data-name="Lemonade" data-price="5">
-            <div class="item-info"><h4>Lemonade</h4><span>$5 each</span></div>
+            <div class="item-info"><h4 data-i18n="lemonade_name">Lemonade</h4><span>$5 <span data-i18n="lbl_each">each</span></span></div>
             <div class="qty-control">
               <button type="button" class="qty-btn" data-action="dec" aria-label="Decrease Lemonade quantity">–</button>
               <span class="qty-value" data-qty>0</span>
@@ -1017,7 +1022,7 @@
             </div>
           </div>
           <div class="order-row" data-name="Hot chocolate" data-price="5">
-            <div class="item-info"><h4>Hot chocolate</h4><span>$5 each</span></div>
+            <div class="item-info"><h4 data-i18n="hotchoc_name">Hot chocolate</h4><span>$5 <span data-i18n="lbl_each">each</span></span></div>
             <div class="qty-control">
               <button type="button" class="qty-btn" data-action="dec" aria-label="Decrease Hot chocolate quantity">–</button>
               <span class="qty-value" data-qty>0</span>
@@ -1025,7 +1030,7 @@
             </div>
           </div>
           <div class="order-row" data-name="Sparkling water" data-price="2">
-            <div class="item-info"><h4>Sparkling water</h4><span>$2 each</span></div>
+            <div class="item-info"><h4 data-i18n="sparkling_name">Sparkling water</h4><span>$2 <span data-i18n="lbl_each">each</span></span></div>
             <div class="qty-control">
               <button type="button" class="qty-btn" data-action="dec" aria-label="Decrease Sparkling water quantity">–</button>
               <span class="qty-value" data-qty>0</span>
@@ -1033,7 +1038,7 @@
             </div>
           </div>
           <div class="order-row" data-name="Water" data-price="0">
-            <div class="item-info"><h4>Water</h4><span>Free</span></div>
+            <div class="item-info"><h4 data-i18n="water_name">Water</h4><span data-i18n="lbl_free">Free</span></div>
             <div class="qty-control">
               <button type="button" class="qty-btn" data-action="dec" aria-label="Decrease Water quantity">–</button>
               <span class="qty-value" data-qty>0</span>
@@ -1043,26 +1048,26 @@
         </div>
 
         <div class="order-summary">
-          <h3>Your order</h3>
-          <div id="summaryLines"><p class="empty-note">Nothing selected yet — add items on the left.</p></div>
-          <div class="order-total"><span>Total</span><span id="summaryTotal">$0</span></div>
+          <h3 data-i18n="summary_title">Your order</h3>
+          <div id="summaryLines"><p class="empty-note" data-i18n="summary_empty">Nothing selected yet — add items on the left.</p></div>
+          <div class="order-total"><span data-i18n="summary_total_label">Total</span><span id="summaryTotal">$0</span></div>
 
           <div class="order-form-fields">
             <div>
-              <label for="orderName">Name</label>
-              <input type="text" id="orderName" placeholder="Your name">
+              <label for="orderName" data-i18n="order_name_label">Name</label>
+              <input type="text" id="orderName" data-i18n-placeholder="order_name_ph" placeholder="Your name">
             </div>
             <div>
-              <label for="orderPhone">Phone or email</label>
-              <input type="text" id="orderPhone" placeholder="How should I reach you?">
+              <label for="orderPhone" data-i18n="order_phone_label">Phone or email</label>
+              <input type="text" id="orderPhone" data-i18n-placeholder="order_phone_ph" placeholder="How should I reach you?">
             </div>
             <div>
-              <label for="orderNotes">Notes</label>
-              <textarea id="orderNotes" rows="3" placeholder="Pickup time, allergies, anything else"></textarea>
+              <label for="orderNotes" data-i18n="order_notes_label">Notes</label>
+              <textarea id="orderNotes" rows="3" data-i18n-placeholder="order_notes_ph" placeholder="Pickup time, allergies, anything else"></textarea>
             </div>
           </div>
 
-          <a href="#" target="_top" class="btn btn-primary order-submit" id="orderSubmit">Send order</a>
+          <a href="#" target="_top" class="btn btn-primary order-submit" id="orderSubmit" data-i18n="order_submit_btn">Send order</a>
           <p class="order-error" id="orderError" role="alert"></p>
         </div>
       </div>
@@ -1073,8 +1078,8 @@
     <div class="contact">
       <div class="wrap">
         <div>
-          <h2>Let's get you fed</h2>
-          <p>Have a question about the menu, allergies, or delivery area? Send a note — I read every one myself.</p>
+          <h2 data-i18n="contact_h2">Let's get you fed</h2>
+          <p data-i18n="contact_p">Have a question about the menu, allergies, or delivery area? Send a note — I read every one myself.</p>
           <div class="contact-details">
             <a href="mailto:erinezgin@gmail.com">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
@@ -1088,18 +1093,18 @@
         </div>
         <form class="inquiry" id="inquiryForm">
           <div>
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Your name" required>
+            <label for="name" data-i18n="contact_name_label">Name</label>
+            <input type="text" id="name" name="name" data-i18n-placeholder="order_name_ph" placeholder="Your name" required>
           </div>
           <div>
-            <label for="email">Email</label>
+            <label for="email" data-i18n="contact_email_label">Email</label>
             <input type="email" id="email" name="email" placeholder="you@email.com" required>
           </div>
           <div>
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="4" placeholder="Which meals are you interested in?" required></textarea>
+            <label for="message" data-i18n="contact_message_label">Message</label>
+            <textarea id="message" name="message" rows="4" data-i18n-placeholder="contact_message_ph" placeholder="Which meals are you interested in?" required></textarea>
           </div>
-          <button type="submit" class="btn">Send message</button>
+          <button type="submit" class="btn" data-i18n="contact_submit_btn">Send message</button>
           <p class="form-status" id="formStatus" role="status"></p>
         </form>
       </div>
@@ -1107,23 +1112,191 @@
   </section>
 
   <footer class="site-footer">
-    <p>&copy; 2026 From My Kitchen To Your Tummy. Made with love, one pan at a time.</p>
+    <p data-i18n="footer_text">&copy; 2026 From My Kitchen To Your Tummy. Made with love, one pan at a time.</p>
   </footer>
 
 </main>
 
 <script>
+  // ---------- Translations ----------
+  const translations = {
+    en: {
+      nav_menu: 'Menu', nav_how: 'How it works', nav_order: 'Order', nav_cta: 'Get in touch',
+      hero_eyebrow: 'Home-cooked meals, made this week',
+      hero_h1: 'From my kitchen<br>to your tummy.',
+      hero_lead: "Real meals, cooked the way your grandmother would — fresh ingredients, no shortcuts, ready when you need dinner solved.",
+      hero_cta1: "See this week's menu", hero_cta2: 'Ask a question',
+      menu_tag: 'The menu', menu_h2: 'Simple food, made fresh',
+      menu_p: "No fuss, no fillers — just the classics, made the way you'd want them at home.",
+      spaghetti_name: 'Spaghetti', spaghetti_desc: "Just normal spaghetti. If you want sauce, I'll add it.",
+      toast_name: 'Toast', toast_desc: 'Cheese and bread, nothing else.',
+      omelette_name: 'Omelette', omelette_desc: 'A fried egg omelette with feta cheese. A family favorite.',
+      beverages_tag: 'Beverages',
+      lemonade_name: 'Lemonade', lemonade_desc: "Sugar, lemon, and water — or sparkling water if you'd like it fizzy.",
+      hotchoc_name: 'Hot chocolate', hotchoc_desc: "Warm and rich, just how you'd expect.",
+      sparkling_name: 'Sparkling water', sparkling_desc: 'Cold and bubbly.',
+      water_name: 'Water', water_desc: 'On the house.',
+      lbl_free: 'Free', lbl_each: 'each',
+      how_tag: 'How it works', how_h2: 'Dinner, sorted in four steps',
+      step1_title: 'Pick your meals', step1_desc: "Message with what looks good from this week's menu, and how many you'd like.",
+      step2_title: 'I cook them fresh', step2_desc: 'I cook them fresh every morning.',
+      step3_title: 'Send payment', step3_desc: 'Venmo the money to @Fatih-Ezgin.',
+      step4_title: 'Pick up or delivery', step4_desc: 'Pick your order up at the front door. Make sure you ring the doorbell! Pickup address: 19 Coventry, Newport Beach, CA 92660.',
+      delivery_h2: 'We deliver with DoorDash',
+      order_tag: 'Place an order', order_h2: "Pick what you'd like",
+      order_p: "Choose your items and quantities below, fill in your details, and it'll open an email ready to send.",
+      summary_title: 'Your order', summary_empty: 'Nothing selected yet — add items on the left.', summary_total_label: 'Total',
+      order_name_label: 'Name', order_name_ph: 'Your name',
+      order_phone_label: 'Phone or email', order_phone_ph: 'How should I reach you?',
+      order_notes_label: 'Notes', order_notes_ph: 'Pickup time, allergies, anything else',
+      order_submit_btn: 'Send order',
+      contact_h2: "Let's get you fed",
+      contact_p: 'Have a question about the menu, allergies, or delivery area? Send a note — I read every one myself.',
+      contact_name_label: 'Name', contact_email_label: 'Email', contact_message_label: 'Message',
+      contact_message_ph: 'Which meals are you interested in?', contact_submit_btn: 'Send message',
+      footer_text: '© 2026 From My Kitchen To Your Tummy. Made with love, one pan at a time.',
+      err_add_item: 'Add at least one item before sending.',
+      err_enter_name: "Enter your name so I know who it's from.",
+      err_add_contact: 'Add a phone number or email so I can reach you.',
+      order_success: 'Opening Gmail — the order details are also copied, in case you need to paste them.',
+      contact_status: "Thanks! This form isn't connected yet — for now, please email or call directly."
+    },
+    es: {
+      nav_menu: 'Menú', nav_how: 'Cómo funciona', nav_order: 'Pedido', nav_cta: 'Contáctame',
+      hero_eyebrow: 'Comida casera, hecha esta semana',
+      hero_h1: 'De mi cocina<br>a tu pancita.',
+      hero_lead: 'Comidas de verdad, cocinadas como lo haría tu abuela — ingredientes frescos, sin atajos, listas cuando necesites resolver la cena.',
+      hero_cta1: 'Ver el menú de esta semana', hero_cta2: 'Hacer una pregunta',
+      menu_tag: 'El menú', menu_h2: 'Comida sencilla, hecha al momento',
+      menu_p: 'Sin complicaciones, sin rellenos — solo los clásicos, hechos como te gustarían en casa.',
+      spaghetti_name: 'Espagueti', spaghetti_desc: 'Espagueti normal y corriente. Si quieres salsa, se la agrego.',
+      toast_name: 'Tostada', toast_desc: 'Queso y pan, nada más.',
+      omelette_name: 'Omelette', omelette_desc: 'Un omelette de huevo con queso feta. Un favorito de la familia.',
+      beverages_tag: 'Bebidas',
+      lemonade_name: 'Limonada', lemonade_desc: 'Azúcar, limón y agua — o agua mineral si la quieres con burbujas.',
+      hotchoc_name: 'Chocolate caliente', hotchoc_desc: 'Calientito y espeso, tal como lo esperas.',
+      sparkling_name: 'Agua mineral', sparkling_desc: 'Fría y con burbujas.',
+      water_name: 'Agua', water_desc: 'Cortesía de la casa.',
+      lbl_free: 'Gratis', lbl_each: 'cada uno',
+      how_tag: 'Cómo funciona', how_h2: 'La cena, resuelta en cuatro pasos',
+      step1_title: 'Elige tus platillos', step1_desc: 'Escríbeme qué se te antoja del menú de esta semana y cuántos quieres.',
+      step2_title: 'Los cocino frescos', step2_desc: 'Los cocino frescos cada mañana.',
+      step3_title: 'Envía el pago', step3_desc: 'Envía el dinero por Venmo a @Fatih-Ezgin.',
+      step4_title: 'Recoger o entrega', step4_desc: 'Recoge tu pedido en la puerta principal. ¡Asegúrate de tocar el timbre! Dirección de recogida: 19 Coventry, Newport Beach, CA 92660.',
+      delivery_h2: 'Hacemos entregas con DoorDash',
+      order_tag: 'Haz un pedido', order_h2: 'Elige lo que quieras',
+      order_p: 'Elige tus productos y cantidades abajo, completa tus datos, y se abrirá un correo listo para enviar.',
+      summary_title: 'Tu pedido', summary_empty: 'Aún no has elegido nada — agrega productos a la izquierda.', summary_total_label: 'Total',
+      order_name_label: 'Nombre', order_name_ph: 'Tu nombre',
+      order_phone_label: 'Teléfono o correo', order_phone_ph: '¿Cómo te contacto?',
+      order_notes_label: 'Notas', order_notes_ph: 'Hora de recogida, alergias, cualquier otra cosa',
+      order_submit_btn: 'Enviar pedido',
+      contact_h2: 'Vamos a alimentarte',
+      contact_p: '¿Tienes alguna pregunta sobre el menú, alergias o zona de entrega? Envía un mensaje — yo misma leo todos.',
+      contact_name_label: 'Nombre', contact_email_label: 'Correo electrónico', contact_message_label: 'Mensaje',
+      contact_message_ph: '¿Qué platillos te interesan?', contact_submit_btn: 'Enviar mensaje',
+      footer_text: '© 2026 From My Kitchen To Your Tummy. Hecho con amor, una sartén a la vez.',
+      err_add_item: 'Agrega al menos un producto antes de enviar.',
+      err_enter_name: 'Escribe tu nombre para saber quién lo envía.',
+      err_add_contact: 'Agrega un teléfono o correo para poder contactarte.',
+      order_success: 'Abriendo Gmail — los detalles del pedido también se copiaron, por si necesitas pegarlos.',
+      contact_status: '¡Gracias! Este formulario aún no está conectado — por ahora, escribe un correo o llama directamente.'
+    },
+    tr: {
+      nav_menu: 'Menü', nav_how: 'Nasıl çalışır', nav_order: 'Sipariş', nav_cta: 'İletişime geç',
+      hero_eyebrow: 'Bu hafta hazırlanan ev yemekleri',
+      hero_h1: 'Mutfağımdan<br>midene.',
+      hero_lead: 'Anneannenin yapacağı gibi gerçek yemekler — taze malzemeler, kısayol yok, akşam yemeği sorununu çözmeye hazır.',
+      hero_cta1: 'Bu haftanın menüsünü gör', hero_cta2: 'Bir soru sor',
+      menu_tag: 'Menü', menu_h2: 'Sade yemekler, taze hazırlanır',
+      menu_p: 'Gösterişsiz, dolgu maddesiz — evde istediğin gibi hazırlanan klasikler.',
+      spaghetti_name: 'Spagetti', spaghetti_desc: 'Sade spagetti. Sos istersen eklerim.',
+      toast_name: 'Tost', toast_desc: 'Peynir ve ekmek, başka hiçbir şey yok.',
+      omelette_name: 'Omlet', omelette_desc: 'Feta peynirli omlet. Ailenin favorisi.',
+      beverages_tag: 'İçecekler',
+      lemonade_name: 'Limonata', lemonade_desc: 'Şeker, limon ve su — köpüklü olsun istersen soda ile.',
+      hotchoc_name: 'Sıcak çikolata', hotchoc_desc: 'Sıcak ve yoğun, tam beklediğin gibi.',
+      sparkling_name: 'Soda', sparkling_desc: 'Soğuk ve köpüklü.',
+      water_name: 'Su', water_desc: 'Bizden hediye.',
+      lbl_free: 'Ücretsiz', lbl_each: 'adet',
+      how_tag: 'Nasıl çalışır', how_h2: 'Akşam yemeği, dört adımda çözülür',
+      step1_title: 'Yemeklerini seç', step1_desc: 'Bu haftanın menüsünden ne istediğini ve kaç adet istediğini yaz.',
+      step2_title: 'Taze pişiriyorum', step2_desc: 'Her sabah taze pişiriyorum.',
+      step3_title: 'Ödemeyi gönder', step3_desc: 'Parayı Venmo ile @Fatih-Ezgin adresine gönder.',
+      step4_title: 'Teslim alma veya teslimat', step4_desc: 'Siparişini ön kapıdan al. Zili çalmayı unutma! Teslim alma adresi: 19 Coventry, Newport Beach, CA 92660.',
+      delivery_h2: 'DoorDash ile teslimat yapıyoruz',
+      order_tag: 'Sipariş ver', order_h2: 'İstediğini seç',
+      order_p: 'Aşağıdan ürünlerini ve miktarlarını seç, bilgilerini doldur, gönderilmeye hazır bir e-posta açılacak.',
+      summary_title: 'Siparişin', summary_empty: 'Henüz bir şey seçmedin — soldan ürün ekle.', summary_total_label: 'Toplam',
+      order_name_label: 'İsim', order_name_ph: 'Adın',
+      order_phone_label: 'Telefon veya e-posta', order_phone_ph: 'Sana nasıl ulaşabilirim?',
+      order_notes_label: 'Notlar', order_notes_ph: 'Teslim alma saati, alerjiler, başka bir şey',
+      order_submit_btn: 'Siparişi gönder',
+      contact_h2: 'Seni doyuralım',
+      contact_p: 'Menü, alerjiler veya teslimat bölgesi hakkında bir sorun mu var? Bir mesaj gönder — hepsini kendim okuyorum.',
+      contact_name_label: 'İsim', contact_email_label: 'E-posta', contact_message_label: 'Mesaj',
+      contact_message_ph: 'Hangi yemeklerle ilgileniyorsun?', contact_submit_btn: 'Mesaj gönder',
+      footer_text: '© 2026 From My Kitchen To Your Tummy. Sevgiyle, bir tava seferinde hazırlandı.',
+      err_add_item: 'Göndermeden önce en az bir ürün ekle.',
+      err_enter_name: 'Kimden geldiğini bilmem için adını yaz.',
+      err_add_contact: 'Sana ulaşabilmem için bir telefon veya e-posta ekle.',
+      order_success: 'Gmail açılıyor — sipariş detayları da kopyalandı, yapıştırman gerekirse diye.',
+      contact_status: 'Teşekkürler! Bu form henüz bağlı değil — şimdilik lütfen doğrudan e-posta gönder veya ara.'
+    }
+  };
+
+  window.i18n = { lang: 'en' };
+  function t(key){
+    const dict = translations[window.i18n.lang] || translations.en;
+    return dict[key] || translations.en[key] || key;
+  }
+
+  function applyTranslations(lang){
+    window.i18n.lang = lang;
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      el.textContent = t(el.getAttribute('data-i18n'));
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el){
+      el.innerHTML = t(el.getAttribute('data-i18n-html'));
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el){
+      el.setAttribute('placeholder', t(el.getAttribute('data-i18n-placeholder')));
+    });
+    try{ localStorage.setItem('fmk_lang', lang); }catch(e){}
+    if(typeof renderSummary === 'function'){ renderSummary(); }
+  }
+
+  const langSwitch = document.getElementById('langSwitch');
+  let savedLang = 'en';
+  try{ savedLang = localStorage.getItem('fmk_lang') || 'en'; }catch(e){}
+  if(langSwitch){
+    langSwitch.value = savedLang;
+    langSwitch.addEventListener('change', function(){ applyTranslations(this.value); });
+  }
+  applyTranslations(savedLang);
+
   // Placeholder submit handling — replace with real form backend (e.g. Formspree, mailto, or a booking tool) when ready.
   const form = document.getElementById('inquiryForm');
   const status = document.getElementById('formStatus');
   if(form){
     form.addEventListener('submit', function(e){
       e.preventDefault();
-      status.textContent = "Thanks! This form isn't connected yet — for now, please email or call directly.";
+      status.textContent = t('contact_status');
     });
   }
 
   // Order form logic
+  const NAME_KEY_BY_ITEM = {
+    'Spaghetti': 'spaghetti_name',
+    'Toast': 'toast_name',
+    'Omelette': 'omelette_name',
+    'Lemonade': 'lemonade_name',
+    'Hot chocolate': 'hotchoc_name',
+    'Sparkling water': 'sparkling_name',
+    'Water': 'water_name'
+  };
+  let renderSummary;
   (function(){
     const rows = document.querySelectorAll('#orderItems .order-row');
     const summaryLines = document.getElementById('summaryLines');
@@ -1147,10 +1320,10 @@
       return items;
     }
 
-    function renderSummary(){
+    renderSummary = function(){
       const items = getItems();
       if(items.length === 0){
-        summaryLines.innerHTML = '<p class="empty-note">Nothing selected yet — add items on the left.</p>';
+        summaryLines.innerHTML = '<p class="empty-note">' + t('summary_empty') + '</p>';
         summaryTotal.textContent = '$0';
         return;
       }
@@ -1159,12 +1332,13 @@
       items.forEach(function(item){
         const lineTotal = item.price * item.qty;
         total += lineTotal;
-        const priceLabel = item.price === 0 ? 'Free' : ('$' + lineTotal.toFixed(2).replace(/\.00$/, ''));
-        html += '<div class="order-line"><span>' + item.qty + ' × ' + item.name + '</span><span>' + priceLabel + '</span></div>';
+        const displayName = t(NAME_KEY_BY_ITEM[item.name] || item.name);
+        const priceLabel = item.price === 0 ? t('lbl_free') : ('$' + lineTotal.toFixed(2).replace(/\.00$/, ''));
+        html += '<div class="order-line"><span>' + item.qty + ' × ' + displayName + '</span><span>' + priceLabel + '</span></div>';
       });
       summaryLines.innerHTML = html;
       summaryTotal.textContent = '$' + total.toFixed(2).replace(/\.00$/, '');
-    }
+    };
 
     rows.forEach(function(row){
       const qtyEl = row.querySelector('[data-qty]');
@@ -1192,19 +1366,19 @@
       if(items.length === 0){
         e.preventDefault();
         orderError.style.color = 'var(--coral-dark)';
-        orderError.textContent = 'Add at least one item before sending.';
+        orderError.textContent = t('err_add_item');
         return;
       }
       if(!name){
         e.preventDefault();
         orderError.style.color = 'var(--coral-dark)';
-        orderError.textContent = 'Enter your name so I know who it\'s from.';
+        orderError.textContent = t('err_enter_name');
         return;
       }
       if(!contact){
         e.preventDefault();
         orderError.style.color = 'var(--coral-dark)';
-        orderError.textContent = 'Add a phone number or email so I can reach you.';
+        orderError.textContent = t('err_add_contact');
         return;
       }
       orderError.textContent = '';
@@ -1232,7 +1406,7 @@
         navigator.clipboard.writeText(plainBody).catch(function(){});
       }
       orderError.style.color = 'var(--sage-dark)';
-      orderError.textContent = 'Opening Gmail — the order details are also copied, in case you need to paste them.';
+      orderError.textContent = t('order_success');
     });
 
     renderSummary();
