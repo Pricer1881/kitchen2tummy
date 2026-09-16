@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://accounts.google.com/gsi/client" async defer></script>
 <style>
 
   :root{
@@ -627,6 +628,57 @@
     min-height: 1.1em;
   }
 
+  /* ---------- Membership ---------- */
+
+  .tier-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+  }
+
+  .tier-card{
+    background: var(--card-bg);
+    border-radius: 22px;
+    padding: 30px 26px;
+    border: 1px solid var(--border-soft);
+    box-shadow: 0 10px 24px -12px var(--shadow-color);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    text-align: center;
+  }
+
+  .tier-card.featured{
+    border: 2px solid var(--coral);
+    transform: translateY(-8px);
+  }
+
+  .tier-card h3{ font-size: 1.3rem; }
+
+  .tier-price{
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 800;
+    font-size: 1.8rem;
+    color: var(--coral-dark);
+  }
+
+  .tier-price span{
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--plum-soft);
+  }
+
+  .tier-card .desc{
+    color: var(--plum-soft);
+    font-size: 0.98rem;
+    flex-grow: 1;
+  }
+
+  .tier-join-btn{
+    justify-content: center;
+    width: 100%;
+  }
+
   form.inquiry label{
     font-size: 0.9rem;
     font-weight: 600;
@@ -693,6 +745,8 @@
     .hero-art{ order: -1; max-width: 320px; margin: 0 auto; }
     .menu-grid{ grid-template-columns: repeat(2, 1fr); }
     .steps{ grid-template-columns: repeat(2, 1fr); gap: 28px; }
+    .tier-grid{ grid-template-columns: 1fr; }
+    .tier-card.featured{ transform: none; }
     .story{ grid-template-columns: 1fr; }
     .story-art{ max-width: 280px; margin: 0 auto; }
     .contact .wrap{ grid-template-columns: 1fr; }
@@ -737,6 +791,7 @@
         <li><a href="#menu" data-i18n="nav_menu">Menu</a></li>
         <li><a href="#how" data-i18n="nav_how">How it works</a></li>
         <li><a href="#order" data-i18n="nav_order">Order</a></li>
+        <li><a href="#membership" data-i18n="nav_membership">Membership</a></li>
       </ul>
     </nav>
     <select id="langSwitch" aria-label="Choose language" style="border-radius:999px; border:2px solid var(--coral); background:var(--cream); color:var(--plum); font-weight:700; font-family:'Mulish',sans-serif; padding:8px 12px; cursor:pointer;">
@@ -976,6 +1031,49 @@
     </div>
   </section>
 
+  <!-- MEMBERSHIP -->
+  <section id="membership">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-tag" data-i18n="membership_tag">Membership</p>
+        <h2 data-i18n="membership_h2">Join for weekly perks</h2>
+        <p data-i18n="membership_p">Pick a plan and get a little something extra with every order.</p>
+      </div>
+
+      <div style="margin-bottom: 32px;">
+        <!-- Google OAuth Client ID for Google Sign-In -->
+        <div id="g_id_onload"
+          data-client_id="491896900081-lnhkutt1o6h15tv0e3s68af2ck4kevfo.apps.googleusercontent.com"
+          data-callback="handleGoogleSignIn"
+          data-auto_prompt="false">
+        </div>
+        <div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline" data-text="signin_with" data-shape="pill" data-logo_alignment="left"></div>
+        <p id="googleSignedInAs" style="margin-top:10px; font-weight:700; color: var(--sage-dark); display:none;"></p>
+      </div>
+
+      <div class="tier-grid">
+        <div class="tier-card">
+          <h3 data-i18n="tier1_name">Regular</h3>
+          <div class="tier-price">$10<span data-i18n="tier_permo">/mo</span></div>
+          <p class="desc" data-i18n="tier1_desc">10% off every order.</p>
+          <a href="#" target="_top" class="btn btn-ghost tier-join-btn tier-join" data-tier="Regular ($10/mo) — 10% off every order" data-i18n="tier_join_btn">Join</a>
+        </div>
+        <div class="tier-card featured">
+          <h3 data-i18n="tier2_name">Plus</h3>
+          <div class="tier-price">$20<span data-i18n="tier_permo">/mo</span></div>
+          <p class="desc" data-i18n="tier2_desc">Free delivery + 5% off every order.</p>
+          <a href="#" target="_top" class="btn btn-primary tier-join-btn tier-join" data-tier="Plus ($20/mo) — Free delivery + 5% off every order" data-i18n="tier_join_btn">Join</a>
+        </div>
+        <div class="tier-card">
+          <h3 data-i18n="tier3_name">Premium</h3>
+          <div class="tier-price">$35<span data-i18n="tier_permo">/mo</span></div>
+          <p class="desc" data-i18n="tier3_desc">Access to a custom, special weekly menu.</p>
+          <a href="#" target="_top" class="btn btn-ghost tier-join-btn tier-join" data-tier="Premium ($35/mo) — Access to a custom, special weekly menu" data-i18n="tier_join_btn">Join</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- STORY -->
   <!-- CONTACT -->
   <!-- ORDER -->
@@ -1118,10 +1216,14 @@
 </main>
 
 <script>
+  // Declared early to avoid a temporal-dead-zone error when applyTranslations() checks it below.
+  let renderSummary;
+
   // ---------- Translations ----------
   const translations = {
     en: {
       nav_menu: 'Menu', nav_how: 'How it works', nav_order: 'Order', nav_cta: 'Get in touch',
+      nav_membership: 'Membership',
       hero_eyebrow: 'Home-cooked meals, made this week',
       hero_h1: 'From my kitchen<br>to your tummy.',
       hero_lead: "Real meals, cooked the way your grandmother would — fresh ingredients, no shortcuts, ready when you need dinner solved.",
@@ -1159,10 +1261,17 @@
       err_enter_name: "Enter your name so I know who it's from.",
       err_add_contact: 'Add a phone number or email so I can reach you.',
       order_success: 'Opening Gmail — the order details are also copied, in case you need to paste them.',
-      contact_status: "Thanks! This form isn't connected yet — for now, please email or call directly."
+      contact_status: "Thanks! This form isn't connected yet — for now, please email or call directly.",
+      membership_tag: 'Membership', membership_h2: 'Join for weekly perks',
+      membership_p: 'Pick a plan and get a little something extra with every order.',
+      tier_permo: '/mo', tier_join_btn: 'Join',
+      tier1_name: 'Regular', tier1_desc: '10% off every order.',
+      tier2_name: 'Plus', tier2_desc: 'Free delivery + 5% off every order.',
+      tier3_name: 'Premium', tier3_desc: 'Access to a custom, special weekly menu.'
     },
     es: {
       nav_menu: 'Menú', nav_how: 'Cómo funciona', nav_order: 'Pedido', nav_cta: 'Contáctame',
+      nav_membership: 'Membresía',
       hero_eyebrow: 'Comida casera, hecha esta semana',
       hero_h1: 'De mi cocina<br>a tu pancita.',
       hero_lead: 'Comidas de verdad, cocinadas como lo haría tu abuela — ingredientes frescos, sin atajos, listas cuando necesites resolver la cena.',
@@ -1200,10 +1309,17 @@
       err_enter_name: 'Escribe tu nombre para saber quién lo envía.',
       err_add_contact: 'Agrega un teléfono o correo para poder contactarte.',
       order_success: 'Abriendo Gmail — los detalles del pedido también se copiaron, por si necesitas pegarlos.',
-      contact_status: '¡Gracias! Este formulario aún no está conectado — por ahora, escribe un correo o llama directamente.'
+      contact_status: '¡Gracias! Este formulario aún no está conectado — por ahora, escribe un correo o llama directamente.',
+      membership_tag: 'Membresía', membership_h2: 'Únete y obtén beneficios cada semana',
+      membership_p: 'Elige un plan y obtén algo extra con cada pedido.',
+      tier_permo: '/mes', tier_join_btn: 'Unirme',
+      tier1_name: 'Regular', tier1_desc: '10% de descuento en cada pedido.',
+      tier2_name: 'Plus', tier2_desc: 'Entrega gratis + 5% de descuento en cada pedido.',
+      tier3_name: 'Premium', tier3_desc: 'Acceso a un menú especial personalizado cada semana.'
     },
     tr: {
       nav_menu: 'Menü', nav_how: 'Nasıl çalışır', nav_order: 'Sipariş', nav_cta: 'İletişime geç',
+      nav_membership: 'Üyelik',
       hero_eyebrow: 'Bu hafta hazırlanan ev yemekleri',
       hero_h1: 'Mutfağımdan<br>midene.',
       hero_lead: 'Anneannenin yapacağı gibi gerçek yemekler — taze malzemeler, kısayol yok, akşam yemeği sorununu çözmeye hazır.',
@@ -1241,7 +1357,13 @@
       err_enter_name: 'Kimden geldiğini bilmem için adını yaz.',
       err_add_contact: 'Sana ulaşabilmem için bir telefon veya e-posta ekle.',
       order_success: 'Gmail açılıyor — sipariş detayları da kopyalandı, yapıştırman gerekirse diye.',
-      contact_status: 'Teşekkürler! Bu form henüz bağlı değil — şimdilik lütfen doğrudan e-posta gönder veya ara.'
+      contact_status: 'Teşekkürler! Bu form henüz bağlı değil — şimdilik lütfen doğrudan e-posta gönder veya ara.',
+      membership_tag: 'Üyelik', membership_h2: 'Haftalık ayrıcalıklar için üye ol',
+      membership_p: 'Bir plan seç, her siparişinde küçük bir ekstra kazan.',
+      tier_permo: '/ay', tier_join_btn: 'Katıl',
+      tier1_name: 'Normal', tier1_desc: 'Her siparişte %10 indirim.',
+      tier2_name: 'Plus', tier2_desc: 'Ücretsiz teslimat + her siparişte %5 indirim.',
+      tier3_name: 'Premium', tier3_desc: 'Özel, haftalık menüye erişim.'
     }
   };
 
@@ -1276,6 +1398,40 @@
   }
   applyTranslations(savedLang);
 
+  // Membership "Join" links — pre-fill a Gmail compose for the chosen tier
+  window.googleUser = null;
+
+  window.handleGoogleSignIn = function(response){
+    try{
+      const base64Url = response.credential.split('.')[1];
+      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      const payload = JSON.parse(decodeURIComponent(atob(base64).split('').map(function(c){
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+      }).join('')));
+      window.googleUser = { name: payload.name || '', email: payload.email || '' };
+      const label = document.getElementById('googleSignedInAs');
+      if(label){
+        label.textContent = 'Signed in as ' + window.googleUser.name + ' (' + window.googleUser.email + ')';
+        label.style.display = 'block';
+      }
+    }catch(err){
+      console.error('Google sign-in parse error', err);
+    }
+  };
+
+  document.querySelectorAll('.tier-join').forEach(function(link){
+    link.addEventListener('click', function(e){
+      const tierInfo = link.getAttribute('data-tier');
+      const subject = 'Membership signup — ' + tierInfo.split(' — ')[0];
+      const nameLine = window.googleUser ? window.googleUser.name : '';
+      const emailLine = window.googleUser ? window.googleUser.email : '';
+      const body = "I'd like to join the " + tierInfo + " membership plan.\n\nName: " + nameLine + "\nPhone or email: " + emailLine;
+      const url = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent('erinezgin@gmail.com') +
+        '&su=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      link.setAttribute('href', url);
+    });
+  });
+
   // Placeholder submit handling — replace with real form backend (e.g. Formspree, mailto, or a booking tool) when ready.
   const form = document.getElementById('inquiryForm');
   const status = document.getElementById('formStatus');
@@ -1296,7 +1452,6 @@
     'Sparkling water': 'sparkling_name',
     'Water': 'water_name'
   };
-  let renderSummary;
   (function(){
     const rows = document.querySelectorAll('#orderItems .order-row');
     const summaryLines = document.getElementById('summaryLines');
