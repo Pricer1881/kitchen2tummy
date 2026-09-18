@@ -649,8 +649,11 @@
   }
 
   .tier-card.featured{
-    border: 2px solid var(--coral);
     transform: translateY(-8px);
+  }
+
+  .tier-card.outlined{
+    border: 2px solid var(--coral);
   }
 
   .tier-card h3{ font-size: 1.3rem; }
@@ -813,7 +816,7 @@
         <h1 data-i18n-html="hero_h1">From my kitchen<br>to your tummy.</h1>
         <p class="lead" data-i18n="hero_lead">Real meals, cooked the way your grandmother would — fresh ingredients, no shortcuts, ready when you need dinner solved.</p>
         <div class="hero-ctas">
-          <a href="#menu" class="btn btn-primary" data-i18n="hero_cta1">See this week's menu</a>
+          <a href="#menu" class="btn btn-primary" data-i18n="hero_cta1">See the all-time menu</a>
           <a href="#contact" class="btn btn-ghost" data-i18n="hero_cta2">Ask a question</a>
         </div>
       </div>
@@ -868,7 +871,7 @@
           <h3 data-i18n="spaghetti_name">Spaghetti</h3>
           <p class="desc" data-i18n="spaghetti_desc">Just normal spaghetti. If you want sauce, I'll add it.</p>
           <div class="price-row">
-            <span class="price">$10</span>
+            <span class="price" data-usd-price="10">$10</span>
           </div>
         </div>
 
@@ -884,7 +887,7 @@
           <h3 data-i18n="toast_name">Toast</h3>
           <p class="desc" data-i18n="toast_desc">Cheese and bread, nothing else.</p>
           <div class="price-row">
-            <span class="price">$10</span>
+            <span class="price" data-usd-price="10">$10</span>
           </div>
         </div>
 
@@ -902,7 +905,7 @@
           <h3 data-i18n="omelette_name">Omelette</h3>
           <p class="desc" data-i18n="omelette_desc">A fried egg omelette with feta cheese. A family favorite.</p>
           <div class="price-row">
-            <span class="price">$10</span>
+            <span class="price" data-usd-price="10">$10</span>
           </div>
         </div>
 
@@ -926,7 +929,7 @@
           <h3 data-i18n="lemonade_name">Lemonade</h3>
           <p class="desc" data-i18n="lemonade_desc">Sugar, lemon, and water — or sparkling water if you'd like it fizzy.</p>
           <div class="price-row">
-            <span class="price">$5</span>
+            <span class="price" data-usd-price="5">$5</span>
           </div>
         </div>
 
@@ -943,7 +946,7 @@
           <h3 data-i18n="hotchoc_name">Hot chocolate</h3>
           <p class="desc" data-i18n="hotchoc_desc">Warm and rich, just how you'd expect.</p>
           <div class="price-row">
-            <span class="price">$5</span>
+            <span class="price" data-usd-price="5">$5</span>
           </div>
         </div>
 
@@ -962,7 +965,7 @@
           <h3 data-i18n="sparkling_name">Sparkling water</h3>
           <p class="desc" data-i18n="sparkling_desc">Cold and bubbly.</p>
           <div class="price-row">
-            <span class="price">$2</span>
+            <span class="price" data-usd-price="2">$2</span>
           </div>
         </div>
 
@@ -1001,7 +1004,7 @@
         <div class="step">
           <span class="step-num">2</span>
           <h3 data-i18n="step2_title">I cook them fresh</h3>
-          <p data-i18n="step2_desc">I cook them fresh every morning.</p>
+          <p data-i18n="step2_desc">I cook them fresh every time someone orders.</p>
         </div>
         <div class="step">
           <span class="step-num">3</span>
@@ -1038,6 +1041,7 @@
         <p class="section-tag" data-i18n="membership_tag">Membership</p>
         <h2 data-i18n="membership_h2">Join for weekly perks</h2>
         <p data-i18n="membership_p">Pick a plan and get a little something extra with every order.</p>
+        <p data-i18n-html="membership_points" style="margin-top:6px;">Earn 1 point for every $1 you spend — Premium members earn <strong>double</strong>.</p>
       </div>
 
       <div style="margin-bottom: 32px;">
@@ -1054,21 +1058,21 @@
       <div class="tier-grid">
         <div class="tier-card">
           <h3 data-i18n="tier1_name">Regular</h3>
-          <div class="tier-price">$10<span data-i18n="tier_permo">/mo</span></div>
+          <div class="tier-price"><span class="price-amt" data-usd-price="10">$10</span><span data-i18n="tier_permo">/mo</span></div>
           <p class="desc" data-i18n="tier1_desc">10% off every order.</p>
-          <a href="#" target="_top" class="btn btn-ghost tier-join-btn tier-join" data-tier="Regular ($10/mo) — 10% off every order" data-i18n="tier_join_btn">Join</a>
+          <a href="#" target="_top" class="btn btn-primary tier-join-btn tier-join" data-tier="Regular ($10/mo) — 10% off every order" data-i18n="tier_join_btn">Join</a>
         </div>
         <div class="tier-card featured">
           <h3 data-i18n="tier2_name">Plus</h3>
-          <div class="tier-price">$20<span data-i18n="tier_permo">/mo</span></div>
+          <div class="tier-price"><span class="price-amt" data-usd-price="20">$20</span><span data-i18n="tier_permo">/mo</span></div>
           <p class="desc" data-i18n="tier2_desc">Free delivery + 5% off every order.</p>
           <a href="#" target="_top" class="btn btn-primary tier-join-btn tier-join" data-tier="Plus ($20/mo) — Free delivery + 5% off every order" data-i18n="tier_join_btn">Join</a>
         </div>
-        <div class="tier-card">
+        <div class="tier-card outlined">
           <h3 data-i18n="tier3_name">Premium</h3>
-          <div class="tier-price">$35<span data-i18n="tier_permo">/mo</span></div>
-          <p class="desc" data-i18n="tier3_desc">Access to a custom, special weekly menu.</p>
-          <a href="#" target="_top" class="btn btn-ghost tier-join-btn tier-join" data-tier="Premium ($35/mo) — Access to a custom, special weekly menu" data-i18n="tier_join_btn">Join</a>
+          <div class="tier-price"><span class="price-amt" data-usd-price="35">$35</span><span data-i18n="tier_permo">/mo</span></div>
+          <p class="desc" data-i18n-html="tier3_desc"><strong>Double points + 30% off for every order.</strong></p>
+          <a href="#" target="_top" class="btn btn-primary tier-join-btn tier-join" data-tier="Premium ($35/mo) — Double points + 30% off for every order" data-i18n="tier_join_btn">Join</a>
         </div>
       </div>
     </div>
@@ -1088,7 +1092,7 @@
       <div class="order-layout">
         <div class="order-items" id="orderItems">
           <div class="order-row" data-name="Spaghetti" data-price="10">
-            <div class="item-info"><h4 data-i18n="spaghetti_name">Spaghetti</h4><span>$10 <span data-i18n="lbl_each">each</span></span></div>
+            <div class="item-info"><h4 data-i18n="spaghetti_name">Spaghetti</h4><span><span class="price-amt" data-usd-price="10">$10</span> <span data-i18n="lbl_each">each</span></span></div>
             <div class="qty-control">
               <button type="button" class="qty-btn" data-action="dec" aria-label="Decrease Spaghetti quantity">–</button>
               <span class="qty-value" data-qty>0</span>
@@ -1096,7 +1100,7 @@
             </div>
           </div>
           <div class="order-row" data-name="Toast" data-price="10">
-            <div class="item-info"><h4 data-i18n="toast_name">Toast</h4><span>$10 <span data-i18n="lbl_each">each</span></span></div>
+            <div class="item-info"><h4 data-i18n="toast_name">Toast</h4><span><span class="price-amt" data-usd-price="10">$10</span> <span data-i18n="lbl_each">each</span></span></div>
             <div class="qty-control">
               <button type="button" class="qty-btn" data-action="dec" aria-label="Decrease Toast quantity">–</button>
               <span class="qty-value" data-qty>0</span>
@@ -1104,7 +1108,7 @@
             </div>
           </div>
           <div class="order-row" data-name="Omelette" data-price="10">
-            <div class="item-info"><h4 data-i18n="omelette_name">Omelette</h4><span>$10 <span data-i18n="lbl_each">each</span></span></div>
+            <div class="item-info"><h4 data-i18n="omelette_name">Omelette</h4><span><span class="price-amt" data-usd-price="10">$10</span> <span data-i18n="lbl_each">each</span></span></div>
             <div class="qty-control">
               <button type="button" class="qty-btn" data-action="dec" aria-label="Decrease Omelette quantity">–</button>
               <span class="qty-value" data-qty>0</span>
@@ -1112,7 +1116,7 @@
             </div>
           </div>
           <div class="order-row" data-name="Lemonade" data-price="5">
-            <div class="item-info"><h4 data-i18n="lemonade_name">Lemonade</h4><span>$5 <span data-i18n="lbl_each">each</span></span></div>
+            <div class="item-info"><h4 data-i18n="lemonade_name">Lemonade</h4><span><span class="price-amt" data-usd-price="5">$5</span> <span data-i18n="lbl_each">each</span></span></div>
             <div class="qty-control">
               <button type="button" class="qty-btn" data-action="dec" aria-label="Decrease Lemonade quantity">–</button>
               <span class="qty-value" data-qty>0</span>
@@ -1120,7 +1124,7 @@
             </div>
           </div>
           <div class="order-row" data-name="Hot chocolate" data-price="5">
-            <div class="item-info"><h4 data-i18n="hotchoc_name">Hot chocolate</h4><span>$5 <span data-i18n="lbl_each">each</span></span></div>
+            <div class="item-info"><h4 data-i18n="hotchoc_name">Hot chocolate</h4><span><span class="price-amt" data-usd-price="5">$5</span> <span data-i18n="lbl_each">each</span></span></div>
             <div class="qty-control">
               <button type="button" class="qty-btn" data-action="dec" aria-label="Decrease Hot chocolate quantity">–</button>
               <span class="qty-value" data-qty>0</span>
@@ -1128,7 +1132,7 @@
             </div>
           </div>
           <div class="order-row" data-name="Sparkling water" data-price="2">
-            <div class="item-info"><h4 data-i18n="sparkling_name">Sparkling water</h4><span>$2 <span data-i18n="lbl_each">each</span></span></div>
+            <div class="item-info"><h4 data-i18n="sparkling_name">Sparkling water</h4><span><span class="price-amt" data-usd-price="2">$2</span> <span data-i18n="lbl_each">each</span></span></div>
             <div class="qty-control">
               <button type="button" class="qty-btn" data-action="dec" aria-label="Decrease Sparkling water quantity">–</button>
               <span class="qty-value" data-qty>0</span>
@@ -1149,6 +1153,7 @@
           <h3 data-i18n="summary_title">Your order</h3>
           <div id="summaryLines"><p class="empty-note" data-i18n="summary_empty">Nothing selected yet — add items on the left.</p></div>
           <div class="order-total"><span data-i18n="summary_total_label">Total</span><span id="summaryTotal">$0</span></div>
+          <p id="usdPaymentNote" style="display:none; font-size:0.85rem; color: var(--plum-soft); margin-top:4px;"></p>
 
           <div class="order-form-fields">
             <div>
@@ -1227,7 +1232,7 @@
       hero_eyebrow: 'Home-cooked meals, made this week',
       hero_h1: 'From my kitchen<br>to your tummy.',
       hero_lead: "Real meals, cooked the way your grandmother would — fresh ingredients, no shortcuts, ready when you need dinner solved.",
-      hero_cta1: "See this week's menu", hero_cta2: 'Ask a question',
+      hero_cta1: "See the all-time menu", hero_cta2: 'Ask a question',
       menu_tag: 'The menu', menu_h2: 'Simple food, made fresh',
       menu_p: "No fuss, no fillers — just the classics, made the way you'd want them at home.",
       spaghetti_name: 'Spaghetti', spaghetti_desc: "Just normal spaghetti. If you want sauce, I'll add it.",
@@ -1241,13 +1246,14 @@
       lbl_free: 'Free', lbl_each: 'each',
       how_tag: 'How it works', how_h2: 'Dinner, sorted in four steps',
       step1_title: 'Pick your meals', step1_desc: "Message with what looks good from this week's menu, and how many you'd like.",
-      step2_title: 'I cook them fresh', step2_desc: 'I cook them fresh every morning.',
+      step2_title: 'I cook them fresh', step2_desc: 'I cook them fresh every time someone orders.',
       step3_title: 'Send payment', step3_desc: 'Venmo the money to @Fatih-Ezgin.',
       step4_title: 'Pick up or delivery', step4_desc: 'Pick your order up at the front door. Make sure you ring the doorbell! Pickup address: 19 Coventry, Newport Beach, CA 92660.',
       delivery_h2: 'We deliver with DoorDash',
       order_tag: 'Place an order', order_h2: "Pick what you'd like",
       order_p: "Choose your items and quantities below, fill in your details, and it'll open an email ready to send.",
       summary_title: 'Your order', summary_empty: 'Nothing selected yet — add items on the left.', summary_total_label: 'Total',
+      note_usd_payment: 'Shown for reference — you\'ll actually send {amount} USD via Venmo, since Venmo only handles US dollars.',
       order_name_label: 'Name', order_name_ph: 'Your name',
       order_phone_label: 'Phone or email', order_phone_ph: 'How should I reach you?',
       order_notes_label: 'Notes', order_notes_ph: 'Pickup time, allergies, anything else',
@@ -1264,10 +1270,11 @@
       contact_status: "Thanks! This form isn't connected yet — for now, please email or call directly.",
       membership_tag: 'Membership', membership_h2: 'Join for weekly perks',
       membership_p: 'Pick a plan and get a little something extra with every order.',
+      membership_points: 'Earn 1 point for every $1 you spend — Premium members earn <strong>double</strong>.',
       tier_permo: '/mo', tier_join_btn: 'Join',
       tier1_name: 'Regular', tier1_desc: '10% off every order.',
       tier2_name: 'Plus', tier2_desc: 'Free delivery + 5% off every order.',
-      tier3_name: 'Premium', tier3_desc: 'Access to a custom, special weekly menu.'
+      tier3_name: 'Premium', tier3_desc: '<strong>Double points + 30% off for every order.</strong>'
     },
     es: {
       nav_menu: 'Menú', nav_how: 'Cómo funciona', nav_order: 'Pedido', nav_cta: 'Contáctame',
@@ -1275,7 +1282,7 @@
       hero_eyebrow: 'Comida casera, hecha esta semana',
       hero_h1: 'De mi cocina<br>a tu pancita.',
       hero_lead: 'Comidas de verdad, cocinadas como lo haría tu abuela — ingredientes frescos, sin atajos, listas cuando necesites resolver la cena.',
-      hero_cta1: 'Ver el menú de esta semana', hero_cta2: 'Hacer una pregunta',
+      hero_cta1: 'Ver el menú de siempre', hero_cta2: 'Hacer una pregunta',
       menu_tag: 'El menú', menu_h2: 'Comida sencilla, hecha al momento',
       menu_p: 'Sin complicaciones, sin rellenos — solo los clásicos, hechos como te gustarían en casa.',
       spaghetti_name: 'Espagueti', spaghetti_desc: 'Espagueti normal y corriente. Si quieres salsa, se la agrego.',
@@ -1289,13 +1296,14 @@
       lbl_free: 'Gratis', lbl_each: 'cada uno',
       how_tag: 'Cómo funciona', how_h2: 'La cena, resuelta en cuatro pasos',
       step1_title: 'Elige tus platillos', step1_desc: 'Escríbeme qué se te antoja del menú de esta semana y cuántos quieres.',
-      step2_title: 'Los cocino frescos', step2_desc: 'Los cocino frescos cada mañana.',
+      step2_title: 'Los cocino frescos', step2_desc: 'Los cocino frescos cada vez que alguien hace un pedido.',
       step3_title: 'Envía el pago', step3_desc: 'Envía el dinero por Venmo a @Fatih-Ezgin.',
       step4_title: 'Recoger o entrega', step4_desc: 'Recoge tu pedido en la puerta principal. ¡Asegúrate de tocar el timbre! Dirección de recogida: 19 Coventry, Newport Beach, CA 92660.',
       delivery_h2: 'Hacemos entregas con DoorDash',
       order_tag: 'Haz un pedido', order_h2: 'Elige lo que quieras',
       order_p: 'Elige tus productos y cantidades abajo, completa tus datos, y se abrirá un correo listo para enviar.',
       summary_title: 'Tu pedido', summary_empty: 'Aún no has elegido nada — agrega productos a la izquierda.', summary_total_label: 'Total',
+      note_usd_payment: 'Solo como referencia — en realidad enviarás {amount} USD por Venmo, ya que Venmo solo maneja dólares estadounidenses.',
       order_name_label: 'Nombre', order_name_ph: 'Tu nombre',
       order_phone_label: 'Teléfono o correo', order_phone_ph: '¿Cómo te contacto?',
       order_notes_label: 'Notas', order_notes_ph: 'Hora de recogida, alergias, cualquier otra cosa',
@@ -1312,10 +1320,11 @@
       contact_status: '¡Gracias! Este formulario aún no está conectado — por ahora, escribe un correo o llama directamente.',
       membership_tag: 'Membresía', membership_h2: 'Únete y obtén beneficios cada semana',
       membership_p: 'Elige un plan y obtén algo extra con cada pedido.',
+      membership_points: 'Gana 1 punto por cada $1 que gastes — los miembros Premium ganan el <strong>doble</strong>.',
       tier_permo: '/mes', tier_join_btn: 'Unirme',
       tier1_name: 'Regular', tier1_desc: '10% de descuento en cada pedido.',
       tier2_name: 'Plus', tier2_desc: 'Entrega gratis + 5% de descuento en cada pedido.',
-      tier3_name: 'Premium', tier3_desc: 'Acceso a un menú especial personalizado cada semana.'
+      tier3_name: 'Premium', tier3_desc: '<strong>Puntos dobles + 30% de descuento en cada pedido.</strong>'
     },
     tr: {
       nav_menu: 'Menü', nav_how: 'Nasıl çalışır', nav_order: 'Sipariş', nav_cta: 'İletişime geç',
@@ -1323,7 +1332,7 @@
       hero_eyebrow: 'Bu hafta hazırlanan ev yemekleri',
       hero_h1: 'Mutfağımdan<br>midene.',
       hero_lead: 'Anneannenin yapacağı gibi gerçek yemekler — taze malzemeler, kısayol yok, akşam yemeği sorununu çözmeye hazır.',
-      hero_cta1: 'Bu haftanın menüsünü gör', hero_cta2: 'Bir soru sor',
+      hero_cta1: 'Her zamanki menüyü gör', hero_cta2: 'Bir soru sor',
       menu_tag: 'Menü', menu_h2: 'Sade yemekler, taze hazırlanır',
       menu_p: 'Gösterişsiz, dolgu maddesiz — evde istediğin gibi hazırlanan klasikler.',
       spaghetti_name: 'Spagetti', spaghetti_desc: 'Sade spagetti. Sos istersen eklerim.',
@@ -1337,13 +1346,14 @@
       lbl_free: 'Ücretsiz', lbl_each: 'adet',
       how_tag: 'Nasıl çalışır', how_h2: 'Akşam yemeği, dört adımda çözülür',
       step1_title: 'Yemeklerini seç', step1_desc: 'Bu haftanın menüsünden ne istediğini ve kaç adet istediğini yaz.',
-      step2_title: 'Taze pişiriyorum', step2_desc: 'Her sabah taze pişiriyorum.',
+      step2_title: 'Taze pişiriyorum', step2_desc: 'Biri sipariş verdiğinde taze pişiriyorum.',
       step3_title: 'Ödemeyi gönder', step3_desc: 'Parayı Venmo ile @Fatih-Ezgin adresine gönder.',
       step4_title: 'Teslim alma veya teslimat', step4_desc: 'Siparişini ön kapıdan al. Zili çalmayı unutma! Teslim alma adresi: 19 Coventry, Newport Beach, CA 92660.',
       delivery_h2: 'DoorDash ile teslimat yapıyoruz',
       order_tag: 'Sipariş ver', order_h2: 'İstediğini seç',
       order_p: 'Aşağıdan ürünlerini ve miktarlarını seç, bilgilerini doldur, gönderilmeye hazır bir e-posta açılacak.',
       summary_title: 'Siparişin', summary_empty: 'Henüz bir şey seçmedin — soldan ürün ekle.', summary_total_label: 'Toplam',
+      note_usd_payment: 'Sadece bilgi amaçlıdır — Venmo yalnızca ABD doları kabul ettiği için aslında {amount} USD göndereceksin.',
       order_name_label: 'İsim', order_name_ph: 'Adın',
       order_phone_label: 'Telefon veya e-posta', order_phone_ph: 'Sana nasıl ulaşabilirim?',
       order_notes_label: 'Notlar', order_notes_ph: 'Teslim alma saati, alerjiler, başka bir şey',
@@ -1360,10 +1370,11 @@
       contact_status: 'Teşekkürler! Bu form henüz bağlı değil — şimdilik lütfen doğrudan e-posta gönder veya ara.',
       membership_tag: 'Üyelik', membership_h2: 'Haftalık ayrıcalıklar için üye ol',
       membership_p: 'Bir plan seç, her siparişinde küçük bir ekstra kazan.',
+      membership_points: 'Harcadığın her 1 dolar için 1 puan kazan — Premium üyeler <strong>iki katı</strong> puan kazanır.',
       tier_permo: '/ay', tier_join_btn: 'Katıl',
       tier1_name: 'Normal', tier1_desc: 'Her siparişte %10 indirim.',
       tier2_name: 'Plus', tier2_desc: 'Ücretsiz teslimat + her siparişte %5 indirim.',
-      tier3_name: 'Premium', tier3_desc: 'Özel, haftalık menüye erişim.'
+      tier3_name: 'Premium', tier3_desc: '<strong>Çift puan + her siparişte %30 indirim.</strong>'
     }
   };
 
@@ -1371,6 +1382,30 @@
   function t(key){
     const dict = translations[window.i18n.lang] || translations.en;
     return dict[key] || translations.en[key] || key;
+  }
+
+  // Approximate exchange rates for DISPLAY only. Real payment always happens
+  // in USD via Venmo — Venmo doesn't support sending pesos or lira.
+  const EXCHANGE_RATES = { es: 17.5, tr: 47 }; // USD -> MXN, USD -> TRY
+
+  function formatPrice(usd){
+    const lang = window.i18n.lang;
+    if(lang === 'es'){
+      const mxn = Math.round(usd * EXCHANGE_RATES.es);
+      return '$' + mxn + ' MXN';
+    }
+    if(lang === 'tr'){
+      const tryAmt = Math.round(usd * EXCHANGE_RATES.tr);
+      return '₺' + tryAmt;
+    }
+    return '$' + (usd % 1 === 0 ? usd : usd.toFixed(2));
+  }
+  window.formatPrice = formatPrice;
+
+  function updatePrices(){
+    document.querySelectorAll('[data-usd-price]').forEach(function(el){
+      el.textContent = formatPrice(parseFloat(el.getAttribute('data-usd-price')));
+    });
   }
 
   function applyTranslations(lang){
@@ -1385,6 +1420,7 @@
     document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el){
       el.setAttribute('placeholder', t(el.getAttribute('data-i18n-placeholder')));
     });
+    updatePrices();
     try{ localStorage.setItem('fmk_lang', lang); }catch(e){}
     if(typeof renderSummary === 'function'){ renderSummary(); }
   }
@@ -1479,7 +1515,9 @@
       const items = getItems();
       if(items.length === 0){
         summaryLines.innerHTML = '<p class="empty-note">' + t('summary_empty') + '</p>';
-        summaryTotal.textContent = '$0';
+        summaryTotal.textContent = formatPrice(0);
+        const noteEl0 = document.getElementById('usdPaymentNote');
+        if(noteEl0){ noteEl0.style.display = 'none'; }
         return;
       }
       let total = 0;
@@ -1488,11 +1526,21 @@
         const lineTotal = item.price * item.qty;
         total += lineTotal;
         const displayName = t(NAME_KEY_BY_ITEM[item.name] || item.name);
-        const priceLabel = item.price === 0 ? t('lbl_free') : ('$' + lineTotal.toFixed(2).replace(/\.00$/, ''));
+        const priceLabel = item.price === 0 ? t('lbl_free') : formatPrice(lineTotal);
         html += '<div class="order-line"><span>' + item.qty + ' × ' + displayName + '</span><span>' + priceLabel + '</span></div>';
       });
       summaryLines.innerHTML = html;
-      summaryTotal.textContent = '$' + total.toFixed(2).replace(/\.00$/, '');
+      summaryTotal.textContent = formatPrice(total);
+
+      const noteEl = document.getElementById('usdPaymentNote');
+      if(noteEl){
+        if(window.i18n.lang === 'en'){
+          noteEl.style.display = 'none';
+        } else {
+          noteEl.style.display = 'block';
+          noteEl.textContent = t('note_usd_payment').replace('{amount}', '$' + total.toFixed(2).replace(/\.00$/, ''));
+        }
+      }
     };
 
     rows.forEach(function(row){
