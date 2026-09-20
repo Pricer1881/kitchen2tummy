@@ -384,7 +384,7 @@
   .step-num{
     font-family: 'Baloo 2', sans-serif;
     font-weight: 800;
-    font-size: 2.6rem;
+    font-size: 3.5rem;
     color: var(--butter);
     -webkit-text-stroke: 2px var(--plum);
     display: block;
@@ -392,8 +392,8 @@
     line-height: 1;
   }
 
-  .step h3{ font-size: 1.2rem; margin-bottom: 8px; }
-  .step p{ color: var(--plum-soft); font-size: 0.98rem; margin: 0; }
+  .step h3{ font-size: 1.65rem; margin-bottom: 8px; }
+  .step p{ color: var(--plum-soft); font-size: 1.3rem; margin: 0; }
 
   /* ---------- Story ---------- */
 
@@ -1009,7 +1009,7 @@
         <div class="step">
           <span class="step-num">3</span>
           <h3 data-i18n="step3_title">Send payment</h3>
-          <p data-i18n="step3_desc">Venmo the money to @Fatih-Ezgin.</p>
+          <p data-i18n="step3_desc" style="background: #FCE4EC; color: #C2185B; padding: 6px 12px; border-radius: 10px; display: inline-block;">Venmo the money to @Fatih-Ezgin.</p>
         </div>
         <div class="step">
           <span class="step-num">4</span>
@@ -1266,8 +1266,10 @@
       err_add_item: 'Add at least one item before sending.',
       err_enter_name: "Enter your name so I know who it's from.",
       err_add_contact: 'Add a phone number or email so I can reach you.',
-      order_success: 'Opening Gmail — the order details are also copied, in case you need to paste them.',
-      contact_status: "Thanks! This form isn't connected yet — for now, please email or call directly.",
+      order_success: 'Order sent! I\'ll be in touch shortly.',
+      order_sending: 'Sending your order…',
+      order_fallback: 'Couldn\'t send automatically — opening Gmail instead so your order still goes through. The details are also copied, in case you need to paste them.',
+      contact_status: "Thanks! Your message has been sent.",
       membership_tag: 'Membership', membership_h2: 'Join for weekly perks',
       membership_p: 'Pick a plan and get a little something extra with every order.',
       membership_points: 'Earn 1 point for every $1 you spend — Premium members earn <strong>double</strong>.',
@@ -1316,8 +1318,10 @@
       err_add_item: 'Agrega al menos un producto antes de enviar.',
       err_enter_name: 'Escribe tu nombre para saber quién lo envía.',
       err_add_contact: 'Agrega un teléfono o correo para poder contactarte.',
-      order_success: 'Abriendo Gmail — los detalles del pedido también se copiaron, por si necesitas pegarlos.',
-      contact_status: '¡Gracias! Este formulario aún no está conectado — por ahora, escribe un correo o llama directamente.',
+      order_success: '¡Pedido enviado! Me pondré en contacto pronto.',
+      order_sending: 'Enviando tu pedido…',
+      order_fallback: 'No se pudo enviar automáticamente — abriendo Gmail para que tu pedido de todas formas se envíe. Los detalles también se copiaron, por si necesitas pegarlos.',
+      contact_status: '¡Gracias! Tu mensaje ha sido enviado.',
       membership_tag: 'Membresía', membership_h2: 'Únete y obtén beneficios cada semana',
       membership_p: 'Elige un plan y obtén algo extra con cada pedido.',
       membership_points: 'Gana 1 punto por cada $1 que gastes — los miembros Premium ganan el <strong>doble</strong>.',
@@ -1366,8 +1370,10 @@
       err_add_item: 'Göndermeden önce en az bir ürün ekle.',
       err_enter_name: 'Kimden geldiğini bilmem için adını yaz.',
       err_add_contact: 'Sana ulaşabilmem için bir telefon veya e-posta ekle.',
-      order_success: 'Gmail açılıyor — sipariş detayları da kopyalandı, yapıştırman gerekirse diye.',
-      contact_status: 'Teşekkürler! Bu form henüz bağlı değil — şimdilik lütfen doğrudan e-posta gönder veya ara.',
+      order_success: 'Sipariş gönderildi! Kısa süre içinde size ulaşacağım.',
+      order_sending: 'Siparişin gönderiliyor…',
+      order_fallback: 'Otomatik gönderilemedi — siparişin yine de iletilsin diye Gmail açılıyor. Detaylar da kopyalandı, yapıştırman gerekirse diye.',
+      contact_status: 'Teşekkürler! Mesajın gönderildi.',
       membership_tag: 'Üyelik', membership_h2: 'Haftalık ayrıcalıklar için üye ol',
       membership_p: 'Bir plan seç, her siparişinde küçük bir ekstra kazan.',
       membership_points: 'Harcadığın her 1 dolar için 1 puan kazan — Premium üyeler <strong>iki katı</strong> puan kazanır.',
@@ -1468,13 +1474,44 @@
     });
   });
 
-  // Placeholder submit handling — replace with real form backend (e.g. Formspree, mailto, or a booking tool) when ready.
+  // Contact form — submits directly to Formspree
   const form = document.getElementById('inquiryForm');
   const status = document.getElementById('formStatus');
+  const CONTACT_FORMSPREE_ENDPOINT = 'https://formspree.io/f/xyezeeyq';
   if(form){
     form.addEventListener('submit', function(e){
       e.preventDefault();
-      status.textContent = t('contact_status');
+      const nameVal = document.getElementById('name').value.trim();
+      const emailVal = document.getElementById('email').value.trim();
+      const messageVal = document.getElementById('message').value.trim();
+      status.style.color = 'var(--sage-dark)';
+      status.textContent = t('order_sending');
+      fetch(CONTACT_FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new URLSearchParams({
+          name: nameVal,
+          email: emailVal,
+          message: messageVal,
+          _subject: 'New message from ' + nameVal
+        })
+      }).then(function(res){
+        if(res.ok){
+          status.style.color = 'var(--sage-dark)';
+          status.textContent = t('contact_status');
+          form.reset();
+        } else {
+          throw new Error('Formspree responded with an error');
+        }
+      }).catch(function(){
+        const subjectText = 'New message from ' + nameVal;
+        const bodyText = messageVal + '\n\nFrom: ' + nameVal + ' (' + emailVal + ')';
+        const gmailUrl = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent('erinezgin@gmail.com') +
+          '&su=' + encodeURIComponent(subjectText) + '&body=' + encodeURIComponent(bodyText);
+        status.style.color = 'var(--coral-dark)';
+        status.textContent = t('order_fallback');
+        window.open(gmailUrl, '_top');
+      });
     });
   }
 
@@ -1495,6 +1532,7 @@
     const orderError = document.getElementById('orderError');
     const orderSubmit = document.getElementById('orderSubmit');
     const ORDER_EMAIL = 'erinezgin@gmail.com';
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xyezeeyq';
 
     function getItems(){
       const items = [];
@@ -1561,25 +1599,23 @@
     });
 
     orderSubmit.addEventListener('click', function(e){
+      e.preventDefault();
       const items = getItems();
       const name = document.getElementById('orderName').value.trim();
       const contact = document.getElementById('orderPhone').value.trim();
       const notes = document.getElementById('orderNotes').value.trim();
 
       if(items.length === 0){
-        e.preventDefault();
         orderError.style.color = 'var(--coral-dark)';
         orderError.textContent = t('err_add_item');
         return;
       }
       if(!name){
-        e.preventDefault();
         orderError.style.color = 'var(--coral-dark)';
         orderError.textContent = t('err_enter_name');
         return;
       }
       if(!contact){
-        e.preventDefault();
         orderError.style.color = 'var(--coral-dark)';
         orderError.textContent = t('err_add_contact');
         return;
@@ -1598,18 +1634,40 @@
       if(notes){ plainBody += 'Notes: ' + notes + '\n'; }
 
       const subjectText = 'New order from ' + name;
-      const gmailUrl = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(ORDER_EMAIL) +
-        '&su=' + encodeURIComponent(subjectText) + '&body=' + encodeURIComponent(plainBody);
 
-      // Set the link's real destination right before the browser follows it —
-      // this is a genuine anchor click, so it isn't treated as a pop-up.
-      orderSubmit.setAttribute('href', gmailUrl);
-
-      if(navigator.clipboard){
-        navigator.clipboard.writeText(plainBody).catch(function(){});
-      }
+      orderSubmit.style.pointerEvents = 'none';
       orderError.style.color = 'var(--sage-dark)';
-      orderError.textContent = t('order_success');
+      orderError.textContent = t('order_sending');
+
+      fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new URLSearchParams({
+          name: name,
+          contact: contact,
+          notes: notes,
+          message: plainBody,
+          _subject: subjectText
+        })
+      }).then(function(res){
+        orderSubmit.style.pointerEvents = '';
+        if(res.ok){
+          orderError.style.color = 'var(--sage-dark)';
+          orderError.textContent = t('order_success');
+        } else {
+          throw new Error('Formspree responded with an error');
+        }
+      }).catch(function(){
+        orderSubmit.style.pointerEvents = '';
+        // Fallback for environments that block outside network requests (e.g. the claude.ai preview link):
+        // open a pre-filled Gmail draft instead so the order still gets sent.
+        const gmailUrl = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(ORDER_EMAIL) +
+          '&su=' + encodeURIComponent(subjectText) + '&body=' + encodeURIComponent(plainBody);
+        if(navigator.clipboard){ navigator.clipboard.writeText(plainBody).catch(function(){}); }
+        orderError.style.color = 'var(--coral-dark)';
+        orderError.textContent = t('order_fallback');
+        window.open(gmailUrl, '_top');
+      });
     });
 
     renderSummary();
