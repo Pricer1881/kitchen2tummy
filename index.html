@@ -682,6 +682,104 @@
     width: 100%;
   }
 
+  /* ---------- Reviews ---------- */
+
+  .review-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+  }
+
+  .review-card{
+    background: var(--card-bg);
+    border-radius: 22px;
+    padding: 28px 24px;
+    border: 1px solid var(--border-soft);
+    box-shadow: 0 10px 24px -12px var(--shadow-color);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .review-stars{
+    color: var(--butter);
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+  }
+
+  .review-quote{
+    color: var(--plum-soft);
+    font-size: 0.98rem;
+    flex-grow: 1;
+    font-style: italic;
+  }
+
+  .review-name{
+    font-weight: 700;
+    color: var(--plum);
+    font-size: 0.92rem;
+  }
+
+  @media (max-width: 720px){
+    .review-grid{ grid-template-columns: 1fr; }
+  }
+
+  .review-form-wrap{
+    max-width: 480px;
+    margin: 40px auto 0;
+    background: var(--card-bg);
+    border-radius: 22px;
+    padding: 30px 28px;
+    border: 1px solid var(--border-soft);
+    box-shadow: 0 10px 24px -12px var(--shadow-color);
+  }
+
+  .review-form{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .review-form h3{
+    margin: 0 0 2px;
+    font-size: 1.2rem;
+    color: var(--plum);
+  }
+
+  .review-form-note{
+    color: var(--plum-soft);
+    font-size: 0.88rem;
+    margin: 0 0 8px;
+  }
+
+  .review-form label{
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--plum-soft);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .review-form input, .review-form textarea, .review-form select{
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border-soft);
+    background: var(--cream);
+    color: var(--plum);
+    font-family: 'Mulish', sans-serif;
+    font-size: 0.98rem;
+  }
+
+  .review-form input:focus, .review-form textarea:focus, .review-form select:focus{
+    outline: 2px solid var(--coral);
+    outline-offset: 1px;
+  }
+
+  .review-form button{
+    margin-top: 6px;
+  }
+
   form.inquiry label{
     font-size: 0.9rem;
     font-weight: 600;
@@ -794,6 +892,7 @@
         <li><a href="#menu" data-i18n="nav_menu">Menu</a></li>
         <li><a href="#how" data-i18n="nav_how">How it works</a></li>
         <li><a href="#order" data-i18n="nav_order">Order</a></li>
+        <li><a href="#reviews" data-i18n="nav_reviews">Reviews</a></li>
         <li><a href="#membership" data-i18n="nav_membership">Membership</a></li>
       </ul>
     </nav>
@@ -1034,6 +1133,44 @@
     </div>
   </section>
 
+  <!-- REVIEWS -->
+  <section id="reviews">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-tag" data-i18n="reviews_tag">Reviews</p>
+        <h2 data-i18n="reviews_h2">What people are saying</h2>
+        <p data-i18n="reviews_p">No reviews yet — be the first to leave one!</p>
+        <a href="#reviewFormAnchor" class="btn btn-primary" id="leaveReviewBtn" data-i18n="reviews_cta_btn" style="margin-top:18px;">Leave a review</a>
+      </div>
+      <div id="reviewFormAnchor" class="review-form-wrap">
+        <form class="review-form" id="reviewForm">
+          <h3 data-i18n="review_form_h3">Leave a review</h3>
+          <p class="review-form-note" data-i18n="review_form_note">Your review will be sent to Erin, who'll add it to the site once approved.</p>
+          <div>
+            <label for="reviewName" data-i18n="review_form_name_label">Name</label>
+            <input type="text" id="reviewName" name="name" data-i18n-placeholder="order_name_ph" placeholder="Your name" required>
+          </div>
+          <div>
+            <label for="reviewRating" data-i18n="review_form_rating_label">Rating</label>
+            <select id="reviewRating" name="rating" required>
+              <option value="5">★★★★★ (5)</option>
+              <option value="4">★★★★☆ (4)</option>
+              <option value="3">★★★☆☆ (3)</option>
+              <option value="2">★★☆☆☆ (2)</option>
+              <option value="1">★☆☆☆☆ (1)</option>
+            </select>
+          </div>
+          <div>
+            <label for="reviewText" data-i18n="review_form_text_label">Your review</label>
+            <textarea id="reviewText" name="review" rows="4" data-i18n-placeholder="review_form_text_ph" placeholder="Tell us what you thought!" required></textarea>
+          </div>
+          <button type="submit" class="btn" data-i18n="review_submit_btn">Submit review</button>
+          <p class="form-status" id="reviewFormStatus" role="status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
   <!-- MEMBERSHIP -->
   <section id="membership">
     <div class="wrap">
@@ -1228,7 +1365,7 @@
   const translations = {
     en: {
       nav_menu: 'Menu', nav_how: 'How it works', nav_order: 'Order', nav_cta: 'Get in touch',
-      nav_membership: 'Membership',
+      nav_membership: 'Membership', nav_reviews: 'Reviews',
       hero_eyebrow: 'Home-cooked meals, made this week',
       hero_h1: 'From my kitchen<br>to your tummy.',
       hero_lead: "Real meals, cooked the way your grandmother would — fresh ingredients, no shortcuts, ready when you need dinner solved.",
@@ -1250,6 +1387,13 @@
       step3_title: 'Send payment', step3_desc: 'Venmo the money to @Fatih-Ezgin.',
       step4_title: 'Pick up or delivery', step4_desc: 'Pick your order up at the front door. Make sure you ring the doorbell! Pickup address: 19 Coventry, Newport Beach, CA 92660.',
       delivery_h2: 'We deliver with DoorDash',
+      reviews_tag: 'Reviews', reviews_h2: 'What people are saying',
+      reviews_p: 'No reviews yet — be the first to leave one!',
+      reviews_cta_btn: 'Leave a review',
+      review_form_h3: 'Leave a review', review_form_note: "Your review will be sent to Erin, who'll add it to the site once approved.",
+      review_form_name_label: 'Name', review_form_rating_label: 'Rating',
+      review_form_text_label: 'Your review', review_form_text_ph: 'Tell us what you thought!',
+      review_submit_btn: 'Submit review', review_status_pending: "Thanks! Your review has been sent for approval.",
       order_tag: 'Place an order', order_h2: "Pick what you'd like",
       order_p: "Choose your items and quantities below, fill in your details, and it'll open an email ready to send.",
       summary_title: 'Your order', summary_empty: 'Nothing selected yet — add items on the left.', summary_total_label: 'Total',
@@ -1280,7 +1424,7 @@
     },
     es: {
       nav_menu: 'Menú', nav_how: 'Cómo funciona', nav_order: 'Pedido', nav_cta: 'Contáctame',
-      nav_membership: 'Membresía',
+      nav_membership: 'Membresía', nav_reviews: 'Reseñas',
       hero_eyebrow: 'Comida casera, hecha esta semana',
       hero_h1: 'De mi cocina<br>a tu pancita.',
       hero_lead: 'Comidas de verdad, cocinadas como lo haría tu abuela — ingredientes frescos, sin atajos, listas cuando necesites resolver la cena.',
@@ -1302,6 +1446,13 @@
       step3_title: 'Envía el pago', step3_desc: 'Envía el dinero por Venmo a @Fatih-Ezgin.',
       step4_title: 'Recoger o entrega', step4_desc: 'Recoge tu pedido en la puerta principal. ¡Asegúrate de tocar el timbre! Dirección de recogida: 19 Coventry, Newport Beach, CA 92660.',
       delivery_h2: 'Hacemos entregas con DoorDash',
+      reviews_tag: 'Reseñas', reviews_h2: 'Lo que dice la gente',
+      reviews_p: 'Aún no hay reseñas — ¡sé el primero en dejar una!',
+      reviews_cta_btn: 'Dejar una reseña',
+      review_form_h3: 'Dejar una reseña', review_form_note: 'Tu reseña se enviará a Erin, quien la añadirá al sitio una vez aprobada.',
+      review_form_name_label: 'Nombre', review_form_rating_label: 'Calificación',
+      review_form_text_label: 'Tu reseña', review_form_text_ph: '¡Cuéntanos qué te pareció!',
+      review_submit_btn: 'Enviar reseña', review_status_pending: '¡Gracias! Tu reseña se envió para aprobación.',
       order_tag: 'Haz un pedido', order_h2: 'Elige lo que quieras',
       order_p: 'Elige tus productos y cantidades abajo, completa tus datos, y se abrirá un correo listo para enviar.',
       summary_title: 'Tu pedido', summary_empty: 'Aún no has elegido nada — agrega productos a la izquierda.', summary_total_label: 'Total',
@@ -1332,7 +1483,7 @@
     },
     tr: {
       nav_menu: 'Menü', nav_how: 'Nasıl çalışır', nav_order: 'Sipariş', nav_cta: 'İletişime geç',
-      nav_membership: 'Üyelik',
+      nav_membership: 'Üyelik', nav_reviews: 'Yorumlar',
       hero_eyebrow: 'Bu hafta hazırlanan ev yemekleri',
       hero_h1: 'Mutfağımdan<br>midene.',
       hero_lead: 'Anneannenin yapacağı gibi gerçek yemekler — taze malzemeler, kısayol yok, akşam yemeği sorununu çözmeye hazır.',
@@ -1354,6 +1505,13 @@
       step3_title: 'Ödemeyi gönder', step3_desc: 'Parayı Venmo ile @Fatih-Ezgin adresine gönder.',
       step4_title: 'Teslim alma veya teslimat', step4_desc: 'Siparişini ön kapıdan al. Zili çalmayı unutma! Teslim alma adresi: 19 Coventry, Newport Beach, CA 92660.',
       delivery_h2: 'DoorDash ile teslimat yapıyoruz',
+      reviews_tag: 'Yorumlar', reviews_h2: 'İnsanlar ne diyor',
+      reviews_p: 'Henüz yorum yok — ilk yorumu sen yaz!',
+      reviews_cta_btn: 'Yorum yaz',
+      review_form_h3: 'Yorum yaz', review_form_note: 'Yorumun Erin\'e gönderilecek, onayladıktan sonra siteye eklenecek.',
+      review_form_name_label: 'İsim', review_form_rating_label: 'Puan',
+      review_form_text_label: 'Yorumun', review_form_text_ph: 'Ne düşündüğünü bize anlat!',
+      review_submit_btn: 'Yorumu gönder', review_status_pending: 'Teşekkürler! Yorumun onay için gönderildi.',
       order_tag: 'Sipariş ver', order_h2: 'İstediğini seç',
       order_p: 'Aşağıdan ürünlerini ve miktarlarını seç, bilgilerini doldur, gönderilmeye hazır bir e-posta açılacak.',
       summary_title: 'Siparişin', summary_empty: 'Henüz bir şey seçmedin — soldan ürün ekle.', summary_total_label: 'Toplam',
@@ -1478,6 +1636,59 @@
   const form = document.getElementById('inquiryForm');
   const status = document.getElementById('formStatus');
   const CONTACT_FORMSPREE_ENDPOINT = 'https://formspree.io/f/xyezeeyq';
+
+  const leaveReviewBtn = document.getElementById('leaveReviewBtn');
+  if(leaveReviewBtn){
+    leaveReviewBtn.addEventListener('click', function(e){
+      e.preventDefault();
+      document.getElementById('reviewFormAnchor').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setTimeout(function(){
+        const nameField = document.getElementById('reviewName');
+        if(nameField){ nameField.focus(); }
+      }, 400);
+    });
+  }
+
+  // Review form — submits to Formspree for Erin to approve before it's added
+  const reviewForm = document.getElementById('reviewForm');
+  const reviewStatus = document.getElementById('reviewFormStatus');
+  if(reviewForm){
+    reviewForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      const nameVal = document.getElementById('reviewName').value.trim();
+      const ratingVal = document.getElementById('reviewRating').value;
+      const reviewVal = document.getElementById('reviewText').value.trim();
+      reviewStatus.style.color = 'var(--sage-dark)';
+      reviewStatus.textContent = t('order_sending');
+      fetch(CONTACT_FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new URLSearchParams({
+          name: nameVal,
+          rating: ratingVal,
+          review: reviewVal,
+          _subject: 'New review from ' + nameVal + ' (' + ratingVal + ' stars)'
+        })
+      }).then(function(res){
+        if(res.ok){
+          reviewStatus.style.color = 'var(--sage-dark)';
+          reviewStatus.textContent = t('review_status_pending');
+          reviewForm.reset();
+        } else {
+          throw new Error('Formspree responded with an error');
+        }
+      }).catch(function(){
+        const subjectText = 'New review from ' + nameVal + ' (' + ratingVal + ' stars)';
+        const bodyText = reviewVal + '\n\nFrom: ' + nameVal + ' — ' + ratingVal + ' stars';
+        const gmailUrl = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent('erinezgin@gmail.com') +
+          '&su=' + encodeURIComponent(subjectText) + '&body=' + encodeURIComponent(bodyText);
+        reviewStatus.style.color = 'var(--coral-dark)';
+        reviewStatus.textContent = t('order_fallback');
+        window.open(gmailUrl, '_top');
+      });
+    });
+  }
+
   if(form){
     form.addEventListener('submit', function(e){
       e.preventDefault();
