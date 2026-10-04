@@ -776,9 +776,35 @@
     outline-offset: 1px;
   }
 
-  .review-form button{
+  .review-form button[type="submit"]{
     margin-top: 6px;
   }
+  .star-picker{
+    display: flex;
+    gap: 6px;
+  }
+
+  .star-btn{
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--border-soft);
+    transition: color 0.12s ease, transform 0.12s ease;
+  }
+
+  .star-btn:hover{ transform: scale(1.12); }
+
+  .star-btn.filled{ color: var(--butter); }
+
+  .star-btn:focus-visible{
+    outline: 2px solid var(--coral);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
 
   form.inquiry label{
     font-size: 0.9rem;
@@ -1008,6 +1034,39 @@
           </div>
         </div>
 
+        <div class="menu-card">
+          <svg class="plate-icon" viewBox="0 0 56 56" fill="none">
+            <circle cx="28" cy="28" r="26" fill="#FBF3E7" stroke="#E8DCC5" stroke-width="2"/>
+            <path d="M12 28h32c0 9-7 15-16 15s-16-6-16-15z" fill="#F2F2ED" stroke="#D9D4C7" stroke-width="1.5"/>
+            <path d="M14 28c1-6 6-9 9-8 2-4 8-4 10-1 4-1 8 2 9 9z" fill="#6FAE4F"/>
+            <path d="M18 27c2-3 5-4 7-3M30 24c3-1 6 0 7 3" stroke="#4E8A36" stroke-width="1.4" stroke-linecap="round"/>
+            <circle cx="22" cy="25" r="3" fill="#D8412F"/>
+            <circle cx="33" cy="24" r="2.6" fill="#D8412F"/>
+            <ellipse cx="28" cy="22" rx="3.4" ry="2" fill="#F4C84B"/>
+          </svg>
+          <h3 data-i18n="salad_name">Salad</h3>
+          <p class="desc" data-i18n="salad_desc">Lettuce, cucumber, carrots, and tomato. Nothing else.</p>
+          <div class="price-row">
+            <span class="price" data-usd-price="10">$10</span>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <svg class="plate-icon" viewBox="0 0 56 56" fill="none">
+            <circle cx="28" cy="28" r="26" fill="#FBF3E7" stroke="#E8DCC5" stroke-width="2"/>
+            <path d="M12 32a16 16 0 0 1 32 0z" fill="#E8B766"/>
+            <path d="M12 32a16 16 0 0 1 32 0" stroke="#C98B3C" stroke-width="1.5" fill="none"/>
+            <path d="M12 32h32v2c0 2-1 3-3 3H15c-2 0-3-1-3-3z" fill="#FFD34D"/>
+            <path d="M16 37v3M24 37v4M33 37v3M40 37v2" stroke="#FFD34D" stroke-width="2.6" stroke-linecap="round"/>
+            <path d="M20 24c3-4 7-6 11-6M36 26c-1-2-2-3-4-4" stroke="#C98B3C" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+          </svg>
+          <h3 data-i18n="quesadilla_name">Quesadilla</h3>
+          <p class="desc" data-i18n="quesadilla_desc">A warm, cheesy quesadilla, hot off the pan.</p>
+          <div class="price-row">
+            <span class="price" data-usd-price="10">$10</span>
+          </div>
+        </div>
+
       </div>
 
       <div class="section-head" style="margin-top: 56px;">
@@ -1043,7 +1102,7 @@
             <path d="M20 12c-1 3 2 3 1 6M27 12c-1 3 2 3 1 6M34 12c-1 3 2 3 1 6" stroke="#C9B79A" stroke-width="2" stroke-linecap="round" fill="none"/>
           </svg>
           <h3 data-i18n="hotchoc_name">Hot chocolate</h3>
-          <p class="desc" data-i18n="hotchoc_desc">Warm and rich, just how you'd expect.</p>
+          <p class="desc" data-i18n="hotchoc_desc">Warm and rich, just how you'd expect. (Not homemade.)</p>
           <div class="price-row">
             <span class="price" data-usd-price="5">$5</span>
           </div>
@@ -1139,9 +1198,10 @@
       <div class="section-head">
         <p class="section-tag" data-i18n="reviews_tag">Reviews</p>
         <h2 data-i18n="reviews_h2">What people are saying</h2>
-        <p data-i18n="reviews_p">No reviews yet — be the first to leave one!</p>
+        <p id="reviewsEmptyMsg" data-i18n="reviews_p">No reviews yet — be the first to leave one!</p>
         <a href="#reviewFormAnchor" class="btn btn-primary" id="leaveReviewBtn" data-i18n="reviews_cta_btn" style="margin-top:18px;">Leave a review</a>
       </div>
+      <div class="review-grid" id="reviewGrid"></div>
       <div id="reviewFormAnchor" class="review-form-wrap">
         <form class="review-form" id="reviewForm">
           <h3 data-i18n="review_form_h3">Leave a review</h3>
@@ -1151,14 +1211,15 @@
             <input type="text" id="reviewName" name="name" data-i18n-placeholder="order_name_ph" placeholder="Your name" required>
           </div>
           <div>
-            <label for="reviewRating" data-i18n="review_form_rating_label">Rating</label>
-            <select id="reviewRating" name="rating" required>
-              <option value="5">★★★★★ (5)</option>
-              <option value="4">★★★★☆ (4)</option>
-              <option value="3">★★★☆☆ (3)</option>
-              <option value="2">★★☆☆☆ (2)</option>
-              <option value="1">★☆☆☆☆ (1)</option>
-            </select>
+            <label id="reviewRatingLabel" data-i18n="review_form_rating_label">Rating</label>
+            <div class="star-picker" id="starPicker" role="radiogroup" aria-labelledby="reviewRatingLabel">
+              <button type="button" class="star-btn" data-value="1" role="radio" aria-checked="false" aria-label="1 star">★</button>
+              <button type="button" class="star-btn" data-value="2" role="radio" aria-checked="false" aria-label="2 stars">★</button>
+              <button type="button" class="star-btn" data-value="3" role="radio" aria-checked="false" aria-label="3 stars">★</button>
+              <button type="button" class="star-btn" data-value="4" role="radio" aria-checked="false" aria-label="4 stars">★</button>
+              <button type="button" class="star-btn" data-value="5" role="radio" aria-checked="false" aria-label="5 stars">★</button>
+            </div>
+            <input type="hidden" id="reviewRating" name="rating" value="">
           </div>
           <div>
             <label for="reviewText" data-i18n="review_form_text_label">Your review</label>
@@ -1250,6 +1311,22 @@
               <button type="button" class="qty-btn" data-action="dec" aria-label="Decrease Omelette quantity">–</button>
               <span class="qty-value" data-qty>0</span>
               <button type="button" class="qty-btn" data-action="inc" aria-label="Increase Omelette quantity">+</button>
+            </div>
+          </div>
+          <div class="order-row" data-name="Salad" data-price="10">
+            <div class="item-info"><h4 data-i18n="salad_name">Salad</h4><span><span class="price-amt" data-usd-price="10">$10</span> <span data-i18n="lbl_each">each</span></span></div>
+            <div class="qty-control">
+              <button type="button" class="qty-btn" data-action="dec" aria-label="Decrease Salad quantity">–</button>
+              <span class="qty-value" data-qty>0</span>
+              <button type="button" class="qty-btn" data-action="inc" aria-label="Increase Salad quantity">+</button>
+            </div>
+          </div>
+          <div class="order-row" data-name="Quesadilla" data-price="10">
+            <div class="item-info"><h4 data-i18n="quesadilla_name">Quesadilla</h4><span><span class="price-amt" data-usd-price="10">$10</span> <span data-i18n="lbl_each">each</span></span></div>
+            <div class="qty-control">
+              <button type="button" class="qty-btn" data-action="dec" aria-label="Decrease Quesadilla quantity">–</button>
+              <span class="qty-value" data-qty>0</span>
+              <button type="button" class="qty-btn" data-action="inc" aria-label="Increase Quesadilla quantity">+</button>
             </div>
           </div>
           <div class="order-row" data-name="Lemonade" data-price="5">
@@ -1375,9 +1452,11 @@
       spaghetti_name: 'Spaghetti', spaghetti_desc: "Just normal spaghetti. If you want sauce, I'll add it.",
       toast_name: 'Toast', toast_desc: 'Cheese and bread, nothing else.',
       omelette_name: 'Omelette', omelette_desc: 'A fried egg omelette with feta cheese. A family favorite.',
+      salad_name: 'Salad', salad_desc: 'Lettuce, cucumber, carrots, and tomato. Nothing else.',
+      quesadilla_name: 'Quesadilla', quesadilla_desc: 'A warm, cheesy quesadilla, hot off the pan.',
       beverages_tag: 'Beverages',
       lemonade_name: 'Lemonade', lemonade_desc: "Sugar, lemon, and water — or sparkling water if you'd like it fizzy.",
-      hotchoc_name: 'Hot chocolate', hotchoc_desc: "Warm and rich, just how you'd expect.",
+      hotchoc_name: 'Hot chocolate', hotchoc_desc: "Warm and rich, just how you'd expect. (Not homemade.)",
       sparkling_name: 'Sparkling water', sparkling_desc: 'Cold and bubbly.',
       water_name: 'Water', water_desc: 'On the house.',
       lbl_free: 'Free', lbl_each: 'each',
@@ -1393,7 +1472,7 @@
       review_form_h3: 'Leave a review', review_form_note: "Your review will be sent to Erin, who'll add it to the site once approved.",
       review_form_name_label: 'Name', review_form_rating_label: 'Rating',
       review_form_text_label: 'Your review', review_form_text_ph: 'Tell us what you thought!',
-      review_submit_btn: 'Submit review', review_status_pending: "Thanks! Your review has been sent for approval.",
+      review_rating_required: 'Please tap a star to give a rating.', review_submit_btn: 'Submit review', review_status_pending: "Thanks! Your review has been sent for approval.",
       order_tag: 'Place an order', order_h2: "Pick what you'd like",
       order_p: "Choose your items and quantities below, fill in your details, and it'll open an email ready to send.",
       summary_title: 'Your order', summary_empty: 'Nothing selected yet — add items on the left.', summary_total_label: 'Total',
@@ -1434,9 +1513,11 @@
       spaghetti_name: 'Espagueti', spaghetti_desc: 'Espagueti normal y corriente. Si quieres salsa, se la agrego.',
       toast_name: 'Tostada', toast_desc: 'Queso y pan, nada más.',
       omelette_name: 'Omelette', omelette_desc: 'Un omelette de huevo con queso feta. Un favorito de la familia.',
+      salad_name: 'Ensalada', salad_desc: 'Lechuga, pepino, zanahorias y tomate. Nada más.',
+      quesadilla_name: 'Quesadilla', quesadilla_desc: 'Una quesadilla caliente y con mucho queso, recién salida del sartén.',
       beverages_tag: 'Bebidas',
       lemonade_name: 'Limonada', lemonade_desc: 'Azúcar, limón y agua — o agua mineral si la quieres con burbujas.',
-      hotchoc_name: 'Chocolate caliente', hotchoc_desc: 'Calientito y espeso, tal como lo esperas.',
+      hotchoc_name: 'Chocolate caliente', hotchoc_desc: 'Calientito y espeso, tal como lo esperas. (No es casero.)',
       sparkling_name: 'Agua mineral', sparkling_desc: 'Fría y con burbujas.',
       water_name: 'Agua', water_desc: 'Cortesía de la casa.',
       lbl_free: 'Gratis', lbl_each: 'cada uno',
@@ -1452,7 +1533,7 @@
       review_form_h3: 'Dejar una reseña', review_form_note: 'Tu reseña se enviará a Erin, quien la añadirá al sitio una vez aprobada.',
       review_form_name_label: 'Nombre', review_form_rating_label: 'Calificación',
       review_form_text_label: 'Tu reseña', review_form_text_ph: '¡Cuéntanos qué te pareció!',
-      review_submit_btn: 'Enviar reseña', review_status_pending: '¡Gracias! Tu reseña se envió para aprobación.',
+      review_rating_required: 'Toca una estrella para dar tu calificación.', review_submit_btn: 'Enviar reseña', review_status_pending: '¡Gracias! Tu reseña se envió para aprobación.',
       order_tag: 'Haz un pedido', order_h2: 'Elige lo que quieras',
       order_p: 'Elige tus productos y cantidades abajo, completa tus datos, y se abrirá un correo listo para enviar.',
       summary_title: 'Tu pedido', summary_empty: 'Aún no has elegido nada — agrega productos a la izquierda.', summary_total_label: 'Total',
@@ -1493,9 +1574,11 @@
       spaghetti_name: 'Spagetti', spaghetti_desc: 'Sade spagetti. Sos istersen eklerim.',
       toast_name: 'Tost', toast_desc: 'Peynir ve ekmek, başka hiçbir şey yok.',
       omelette_name: 'Omlet', omelette_desc: 'Feta peynirli omlet. Ailenin favorisi.',
+      salad_name: 'Salata', salad_desc: 'Marul, salatalık, havuç ve domates. Başka hiçbir şey yok.',
+      quesadilla_name: 'Kesadilya', quesadilla_desc: 'Sıcak, bol peynirli kesadilya, tavadan yeni çıkmış.',
       beverages_tag: 'İçecekler',
       lemonade_name: 'Limonata', lemonade_desc: 'Şeker, limon ve su — köpüklü olsun istersen soda ile.',
-      hotchoc_name: 'Sıcak çikolata', hotchoc_desc: 'Sıcak ve yoğun, tam beklediğin gibi.',
+      hotchoc_name: 'Sıcak çikolata', hotchoc_desc: 'Sıcak ve yoğun, tam beklediğin gibi. (Ev yapımı değil.)',
       sparkling_name: 'Soda', sparkling_desc: 'Soğuk ve köpüklü.',
       water_name: 'Su', water_desc: 'Bizden hediye.',
       lbl_free: 'Ücretsiz', lbl_each: 'adet',
@@ -1511,7 +1594,7 @@
       review_form_h3: 'Yorum yaz', review_form_note: 'Yorumun Erin\'e gönderilecek, onayladıktan sonra siteye eklenecek.',
       review_form_name_label: 'İsim', review_form_rating_label: 'Puan',
       review_form_text_label: 'Yorumun', review_form_text_ph: 'Ne düşündüğünü bize anlat!',
-      review_submit_btn: 'Yorumu gönder', review_status_pending: 'Teşekkürler! Yorumun onay için gönderildi.',
+      review_rating_required: 'Lütfen puan vermek için bir yıldıza dokun.', review_submit_btn: 'Yorumu gönder', review_status_pending: 'Teşekkürler! Yorumun onay için gönderildi.',
       order_tag: 'Sipariş ver', order_h2: 'İstediğini seç',
       order_p: 'Aşağıdan ürünlerini ve miktarlarını seç, bilgilerini doldur, gönderilmeye hazır bir e-posta açılacak.',
       summary_title: 'Siparişin', summary_empty: 'Henüz bir şey seçmedin — soldan ürün ekle.', summary_total_label: 'Toplam',
@@ -1650,44 +1733,145 @@
   }
 
   // Review form — submits to Formspree for Erin to approve before it's added
+  const REVIEW_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSdqYnl0DHSda3waczprCzbnkd4ofvn7UAoiIOsDFseiMTvyfA/formResponse';
+  const REVIEW_FORM_ENTRY = { name: 'entry.1264751832', rating: 'entry.1685192199', review: 'entry.1918091929' };
+  const REVIEWS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQBWRGGqNYkdr1xh68mIFRHO86mIB32SnFxLuKhZNu2GrUanLm63JPyWmol6Ns_M48wjwXDoyPsmjIZ/pub?gid=1098194004&single=true&output=csv';
   const reviewForm = document.getElementById('reviewForm');
   const reviewStatus = document.getElementById('reviewFormStatus');
+  const starBtns = document.querySelectorAll('#starPicker .star-btn');
+  const ratingInput = document.getElementById('reviewRating');
+  function paintStars(n){
+    starBtns.forEach(function(b){
+      const on = parseInt(b.dataset.value, 10) <= n;
+      b.classList.toggle('filled', on);
+      b.setAttribute('aria-checked', String(parseInt(b.dataset.value, 10) === parseInt(ratingInput.value || '0', 10)));
+    });
+  }
+  starBtns.forEach(function(b){
+    b.addEventListener('click', function(){
+      ratingInput.value = b.dataset.value;
+      paintStars(parseInt(b.dataset.value, 10));
+    });
+    b.addEventListener('mouseenter', function(){ paintStars(parseInt(b.dataset.value, 10)); });
+  });
+  const starPickerEl = document.getElementById('starPicker');
+  if(starPickerEl){
+    starPickerEl.addEventListener('mouseleave', function(){ paintStars(parseInt(ratingInput.value || '0', 10)); });
+  }
   if(reviewForm){
+    reviewForm.addEventListener('reset', function(){
+      setTimeout(function(){ ratingInput.value = ''; paintStars(0); }, 0);
+    });
     reviewForm.addEventListener('submit', function(e){
       e.preventDefault();
       const nameVal = document.getElementById('reviewName').value.trim();
       const ratingVal = document.getElementById('reviewRating').value;
+      if(!ratingVal){
+        reviewStatus.style.color = 'var(--coral-dark)';
+        reviewStatus.textContent = t('review_rating_required');
+        return;
+      }
       const reviewVal = document.getElementById('reviewText').value.trim();
       reviewStatus.style.color = 'var(--sage-dark)';
       reviewStatus.textContent = t('order_sending');
-      fetch(CONTACT_FORMSPREE_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: new URLSearchParams({
-          name: nameVal,
-          rating: ratingVal,
-          review: reviewVal,
-          _subject: 'New review from ' + nameVal + ' (' + ratingVal + ' stars)'
-        })
-      }).then(function(res){
-        if(res.ok){
-          reviewStatus.style.color = 'var(--sage-dark)';
-          reviewStatus.textContent = t('review_status_pending');
-          reviewForm.reset();
-        } else {
-          throw new Error('Formspree responded with an error');
-        }
+      const sendViaFormspree = function(){
+        return fetch(CONTACT_FORMSPREE_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new URLSearchParams({
+            name: nameVal,
+            rating: ratingVal,
+            review: reviewVal,
+            _subject: 'New review from ' + nameVal + ' (' + ratingVal + ' stars)'
+          })
+        });
+      };
+      const gp = {};
+      gp[REVIEW_FORM_ENTRY.name] = nameVal;
+      gp[REVIEW_FORM_ENTRY.rating] = ratingVal;
+      gp[REVIEW_FORM_ENTRY.review] = reviewVal;
+      fetch(REVIEW_FORM_URL, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(gp) })
+      .then(function(){
+        reviewStatus.style.color = 'var(--sage-dark)';
+        reviewStatus.textContent = t('review_status_pending');
+        reviewForm.reset();
+        sendViaFormspree().catch(function(){});
       }).catch(function(){
-        const subjectText = 'New review from ' + nameVal + ' (' + ratingVal + ' stars)';
-        const bodyText = reviewVal + '\n\nFrom: ' + nameVal + ' — ' + ratingVal + ' stars';
-        const gmailUrl = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent('erinezgin@gmail.com') +
-          '&su=' + encodeURIComponent(subjectText) + '&body=' + encodeURIComponent(bodyText);
-        reviewStatus.style.color = 'var(--coral-dark)';
-        reviewStatus.textContent = t('order_fallback');
-        window.open(gmailUrl, '_top');
+        sendViaFormspree().then(function(res){
+          if(res.ok){
+            reviewStatus.style.color = 'var(--sage-dark)';
+            reviewStatus.textContent = t('review_status_pending');
+            reviewForm.reset();
+          } else {
+            throw new Error('Formspree responded with an error');
+          }
+        }).catch(function(){
+          const subjectText = 'New review from ' + nameVal + ' (' + ratingVal + ' stars)';
+          const bodyText = reviewVal + '\n\nFrom: ' + nameVal + ' — ' + ratingVal + ' stars';
+          const gmailUrl = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent('erinezgin@gmail.com') +
+            '&su=' + encodeURIComponent(subjectText) + '&body=' + encodeURIComponent(bodyText);
+          reviewStatus.style.color = 'var(--coral-dark)';
+          reviewStatus.textContent = t('order_fallback');
+          window.open(gmailUrl, '_top');
+        });
       });
     });
   }
+
+  // Show only the reviews Erin approved (Approved column = yes in the Google Sheet)
+  function parseCSV(text){
+    const rows = []; let row = [], field = '', inQ = false;
+    for(let n = 0; n < text.length; n++){
+      const c = text[n];
+      if(inQ){
+        if(c === '"'){ if(text[n+1] === '"'){ field += '"'; n++; } else { inQ = false; } }
+        else { field += c; }
+      } else if(c === '"'){ inQ = true; }
+      else if(c === ','){ row.push(field); field = ''; }
+      else if(c === '\n' || c === '\r'){
+        if(c === '\r' && text[n+1] === '\n'){ n++; }
+        row.push(field); field = ''; rows.push(row); row = [];
+      } else { field += c; }
+    }
+    if(field !== '' || row.length){ row.push(field); rows.push(row); }
+    return rows;
+  }
+
+  function loadApprovedReviews(){
+    const grid = document.getElementById('reviewGrid');
+    const emptyMsg = document.getElementById('reviewsEmptyMsg');
+    if(!grid) return;
+    fetch(REVIEWS_CSV_URL).then(function(res){
+      if(!res.ok){ throw new Error('bad response'); }
+      return res.text();
+    }).then(function(text){
+      const rows = parseCSV(text);
+      const header = (rows[0] || []).map(function(h){ return h.trim().toLowerCase(); });
+      const iName = header.indexOf('name'), iRating = header.indexOf('rating'),
+            iReview = header.indexOf('review'), iApproved = header.indexOf('approved');
+      if(iName < 0 || iRating < 0 || iReview < 0 || iApproved < 0){ return; }
+      const approved = rows.slice(1).filter(function(r){
+        return (r[iApproved] || '').trim().toLowerCase() === 'yes' && (r[iReview] || '').trim() !== '';
+      }).reverse();
+      if(!approved.length){ return; }
+      grid.innerHTML = '';
+      approved.forEach(function(r){
+        const n = Math.max(1, Math.min(5, parseInt(r[iRating], 10) || 5));
+        const card = document.createElement('div'); card.className = 'review-card';
+        const stars = document.createElement('div'); stars.className = 'review-stars';
+        stars.setAttribute('aria-label', n + ' out of 5 stars');
+        stars.textContent = '★'.repeat(n) + '☆'.repeat(5 - n);
+        const quote = document.createElement('p'); quote.className = 'review-quote';
+        quote.textContent = '"' + r[iReview].trim() + '"';
+        const who = document.createElement('p'); who.className = 'review-name';
+        who.textContent = '— ' + ((r[iName] || '').trim() || 'Anonymous');
+        card.appendChild(stars); card.appendChild(quote); card.appendChild(who);
+        grid.appendChild(card);
+      });
+      if(emptyMsg){ emptyMsg.style.display = 'none'; }
+    }).catch(function(){ /* keep the "No reviews yet" message */ });
+  }
+  loadApprovedReviews();
 
   if(form){
     form.addEventListener('submit', function(e){
@@ -1731,6 +1915,8 @@
     'Spaghetti': 'spaghetti_name',
     'Toast': 'toast_name',
     'Omelette': 'omelette_name',
+    'Salad': 'salad_name',
+    'Quesadilla': 'quesadilla_name',
     'Lemonade': 'lemonade_name',
     'Hot chocolate': 'hotchoc_name',
     'Sparkling water': 'sparkling_name',
