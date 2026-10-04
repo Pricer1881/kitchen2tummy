@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Erin Ezgin</title>
+<meta name="description" content="Welcome! Here are the websites I've made.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌟</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Mulish:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream: #FFF8EA;
+    --cream-2: #FFF1D6;
+    --coral: #FF8C6B;
+    --coral-dark: #E5714F;
+    --sage: #93B57E;
+    --butter: #FFCE5C;
+    --plum: #4A3728;
+    --plum-soft: #7A6353;
+    --card-bg: #FFFFFF;
+    --border-soft: #EADFC8;
+    --shadow-color: rgba(74, 55, 40, 0.14);
+  }
+
+  @media (prefers-color-scheme: dark){
+    :root{
+      --cream: #241D16;
+      --cream-2: #2C2319;
+      --coral: #FF9B7C;
+      --coral-dark: #FFB199;
+      --sage: #9FC48A;
+      --butter: #FFD873;
+      --plum: #F5EDE1;
+      --plum-soft: #CBB99E;
+      --card-bg: #2F2619;
+      --border-soft: #4A3B29;
+      --shadow-color: rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  *{ box-sizing: border-box; }
+
+  html{ height: 100%; }
+
+  body{
+    margin: 0;
+    min-height: 100%;
+    background: var(--cream);
+    color: var(--plum);
+    font-family: 'Mulish', system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    padding: env(safe-area-inset-top, 0px) 20px env(safe-area-inset-bottom, 0px);
+    display: flex;
+    flex-direction: column;
+  }
+
+  main{
+    width: 100%;
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 72px 0 40px;
+    flex: 1;
+  }
+
+  header{ text-align: center; margin-bottom: 52px; }
+
+  .eyebrow{
+    display: inline-block;
+    background: var(--cream-2);
+    color: var(--coral-dark);
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 999px;
+    margin: 0 0 18px;
+  }
+
+  h1{
+    font-family: 'Baloo 2', 'Mulish', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2.4rem, 8vw, 3.8rem);
+    line-height: 1.08;
+    margin: 0 0 12px;
+  }
+
+  .tagline{
+    color: var(--plum-soft);
+    font-size: 1.15rem;
+    margin: 0;
+  }
+
+  .sites{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+  }
+
+  .site-card{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-soft);
+    border-radius: 24px;
+    padding: 30px 26px;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 10px 24px -12px var(--shadow-color);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .site-card:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 16px 28px -12px var(--shadow-color);
+  }
+
+  .site-card:focus-visible{
+    outline: 3px solid var(--coral);
+    outline-offset: 3px;
+  }
+
+  .site-icon{
+    width: 56px;
+    height: 56px;
+    border-radius: 18px;
+    background: var(--cream-2);
+    display: grid;
+    place-items: center;
+    font-size: 1.9rem;
+  }
+
+  .site-card h2{
+    font-family: 'Baloo 2', 'Mulish', sans-serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+    line-height: 1.2;
+    margin: 6px 0 0;
+  }
+
+  .site-card p{
+    margin: 0;
+    color: var(--plum-soft);
+    flex: 1;
+  }
+
+  .visit{
+    margin-top: 6px;
+    font-weight: 700;
+    color: var(--coral-dark);
+  }
+
+  .site-card.coming-soon{
+    border: 2px dashed var(--border-soft);
+    background: transparent;
+    box-shadow: none;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    pointer-events: none;
+    min-height: 220px;
+  }
+
+  .site-card.coming-soon .site-icon{ background: transparent; }
+
+  .site-card.coming-soon h2{ color: var(--plum-soft); font-size: 1.15rem; }
+
+  footer{
+    text-align: center;
+    color: var(--plum-soft);
+    font-size: 0.9rem;
+    padding: 24px 0 28px;
+  }
+</style>
+</head>
+<body>
+
+  <main>
+    <header>
+      <p class="eyebrow">Welcome</p>
+      <h1>Erin Ezgin</h1>
+      <p class="tagline">Here are the websites I've made.</p>
+    </header>
+
+    <section class="sites" aria-label="My websites">
+
+      <a class="site-card" href="kitchen2tummy/">
+        <div class="site-icon" aria-hidden="true">🍝</div>
+        <h2>From My Kitchen To Your Tummy</h2>
+        <p>Home-cooked meals, made fresh when you order.</p>
+        <span class="visit">Visit site →</span>
+      </a>
+
+      <!--
+        TO ADD A NEW WEBSITE: copy everything from <a class="site-card" ...> down to its closing </a>,
+        paste it right above this comment, then change four things:
+          1) href="..."      -> the new site's folder, for example href="mynewsite/"
+          2) the emoji       -> inside site-icon
+          3) the title       -> inside <h2>
+          4) the description -> inside <p>
+      -->
+
+      <div class="site-card coming-soon" aria-label="More websites coming soon">
+        <div class="site-icon" aria-hidden="true">✨</div>
+        <h2>More coming soon</h2>
+      </div>
+
+    </section>
+  </main>
+
+  <footer>© Erin Ezgin</footer>
+
+</body>
+</html>
